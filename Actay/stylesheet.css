@@ -1,0 +1,44 @@
+/* Actay Regular & Italic */
+@font-face {
+    font-family: 'Actay';
+    src: url('Actay-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Actay';
+    src: url('Actay-RegularItalic.otf') format('opentype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* Actay Condensed Thin & Thin Italic */
+@font-face {
+    font-family: 'Actay Condensed';
+    src: url('ActayCondensed-Thin.otf') format('opentype');
+    font-weight: 100; /* Thin */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Actay Condensed';
+    src: url('ActayCondensed-ThinItalic.otf') format('opentype');
+    font-weight: 100;
+    font-style: italic;
+}
+
+/* Actay Wide Bold & Bold Italic */
+@font-face {
+    font-family: 'Actay Wide';
+    src: url('ActayWide-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Actay Wide';
+    src: url('ActayWide-BoldItalic.otf') format('opentype');
+    font-weight: bold;
+    font-style: italic;
+}

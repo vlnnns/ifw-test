@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IFW — Invest Freedom Win</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: "#7667ED",
+            dark: "#29292B",
+            light: "#D8D9D8",
+          },
+          borderRadius: {
+            frame: "48px",
+          },
+          boxShadow: {
+            frame: "0 40px 120px rgba(0,0,0,0.45)",
+          },
+          fontFamily: {
+            actay: ["Actay", "ui-sans-serif", "system-ui", "Segoe UI", "Roboto", "Arial"],
+            gill: ["Gill Sans", "ui-sans-serif", "system-ui", "Segoe UI", "Roboto", "Arial"],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  </style>
+</head>
+
+<body class="bg-black overflow-x-hidden">
+<!-- FULLSCREEN FRAME -->
+<div class="relative min-h-screen w-full bg-dark">
+  <!-- Side purple inserts (если не нужны — просто удали эти 2 div) -->
+  <div class="pointer-events-none absolute inset-y-0 left-0 w-[120px] bg-brand"></div>
+  <div class="pointer-events-none absolute inset-y-0 right-0 w-[120px] bg-brand"></div>
+
+  <!-- TOP CENTER PURPLE TAB (как на дизайне) -->
+  <div class="pointer-events-none absolute top-5 left-1/2 -translate-x-1/2 z-20">
+    <div class="rounded-md bg-brand px-5 py-2 shadow-[0_14px_40px_rgba(0,0,0,0.35)]">
+      <div class="text-[10px] font-semibold tracking-[0.22em] text-white">
+        INVEST FREEDOM WIN
+      </div>
+    </div>
+  </div>
+
+  <!-- Content area: толщина тёмной рамки вокруг сайта -->
+  <main class="relative z-10 mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-[120px] py-8 sm:py-10">
+    <!-- === FIX 1: делаем “рамку” как на дизайне: тёмная подложка + внутренний светлый блок с правильными радиусами === -->
+    <div class="rounded-frame bg-dark p-3 sm:p-5 lg:p-6 shadow-frame">
+      <div class="w-full overflow-hidden rounded-[40px] bg-light">
+        <!-- Top header -->
+        <div class="flex items-center justify-between px-6 pt-7 sm:px-10 sm:pt-9">
+          <img src="/img/logo.png" alt="IFW Logo" class="h-14 w-auto select-none object-contain" />
+
+          <!-- Desktop nav -->
+          <div class="hidden items-center gap-4 md:flex">
+            <nav class="rounded-full bg-white/70 px-3 py-2 shadow-[0_10px_30px_rgba(0,0,0,0.12)] backdrop-blur">
+              <ul class="flex items-center gap-1 text-sm">
+                <li><a class="rounded-full px-3 py-2 text-black/70 hover:text-black" href="#">Головна</a></li>
+                <li><a class="rounded-full px-3 py-2 font-semibold text-brand" href="#">Про нас</a></li>
+                <li><a class="rounded-full px-3 py-2 text-black/70 hover:text-black" href="#">Проєкти</a></li>
+                <li><a class="rounded-full px-3 py-2 text-black/70 hover:text-black" href="#">Реферальна програма</a></li>
+                <li><a class="rounded-full px-3 py-2 text-black/70 hover:text-black" href="#">FAQ</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <!-- Mobile button -->
+          <button class="inline-flex items-center justify-center rounded-xl bg-white/70 px-3 py-2 text-sm font-semibold text-black shadow md:hidden" type="button">
+            Меню
+          </button>
+        </div>
+
+        <!-- HERO -->
+        <section class="grid gap-10 px-6 pb-10 pt-8 sm:px-10 sm:pb-12 lg:grid-cols-12 lg:items-center lg:gap-8">
+          <!-- Left -->
+          <div class="lg:col-span-6">
+            <h1 class="font-sans text-[46px] font-extrabold leading-[0.95] tracking-tight text-[#1D1D1F] sm:text-[64px]">
+              INVEST<br />
+              FREEDOM<br />
+              <span class="text-brand">WIN</span>
+            </h1>
+
+            <p class="mt-5 max-w-xl font-actay text-[15px] leading-relaxed text-black/70">
+              IFW — це перший соціально-інвестиційний фонд, який втілює комерційні ініціативи в життя, приносячи користь країні
+              та армії, а інвесторам — <span class="font-semibold text-black/85">прозорий дохід</span>.
+              Ви отримуєте можливість стати партнером масштабних виробництв та інших серйозних бізнес-проєктів, при цьому не
+              вкладаючи великі бюджети.
+            </p>
+
+            <div class="mt-7">
+              <a
+                      href="#about"
+                      class="inline-flex items-center justify-center rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white
+                         shadow-[0_18px_40px_rgba(118,103,237,0.35)] hover:brightness-95 active:brightness-90"
+              >
+                Дізнатись більше
+              </a>
+            </div>
+          </div>
+
+          <!-- Right image -->
+          <div class="relative lg:col-span-6">
+            <div class="relative mx-auto max-w-[560px]">
+              <img
+                      src="/img/IMG_7475.PNG"
+                      alt="IFW characters"
+                      class="h-auto w-full select-none object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.35)]"
+              />
+            </div>
+
+            <div class="pointer-events-none absolute -right-10 top-10 hidden h-[420px] w-[420px] opacity-10 lg:block">
+              <svg viewBox="0 0 200 200" class="h-full w-full">
+                <path d="M40 160 L160 40" stroke="#000" stroke-width="18" stroke-linecap="round" fill="none"/>
+                <path d="M122 40 H160 V78" stroke="#000" stroke-width="18" stroke-linecap="round" fill="none"/>
+              </svg>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIDEO BLOCK -->
+        <section class="px-6 pb-12 sm:px-10 sm:pb-14">
+          <!-- === FIX 2: радиусы/отступы как на макете (больше воздуха, мягче края) === -->
+          <div class="rounded-[40px] bg-dark px-6 py-9 sm:px-10 sm:py-12">
+            <h2 class="text-center font-sans text-[28px] font-extrabold tracking-tight text-white sm:text-[34px]">
+              Як ми це <span class="text-brand">бачим</span> та <span class="text-brand">робим</span>
+            </h2>
+
+            <div class="mt-8 rounded-[24px] bg-black/10 p-4 sm:p-6">
+              <div class="aspect-video w-full overflow-hidden rounded-[18px] bg-black/15">
+                <iframe
+                        class="h-full w-full"
+                        src="https://www.youtube.com/embed/YOUTUBE_ID?rel=0&modestbranding=1"
+                        title="IFW video"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+
+            <p class="mt-8 text-center font-sans text-xl font-extrabold text-white sm:text-2xl">
+              Не словом, а <span class="text-brand">ділом</span>
+            </p>
+          </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section class="px-6 pb-16 sm:px-10 sm:pb-20">
+          <div class="rounded-[40px] bg-dark px-6 py-10 sm:px-12 sm:py-14">
+            <h2 class="text-center font-sans text-[26px] font-extrabold tracking-tight text-white sm:text-[32px]">
+              Як це <span class="text-brand">ПРАЦЮЄ?</span>
+            </h2>
+
+            <div class="mt-7 flex justify-center">
+              <img
+                      src="/img/IMG_7470.PNG"
+                      alt="Як це працює"
+                      class="h-[96px] w-auto select-none object-contain"
+              />
+            </div>
+
+            <!-- === FIX 3: больше внутреннего отступа, ровный бордер, радиусы ближе к дизайну === -->
+            <div class="relative mt-9 rounded-[28px] border border-white/70 px-6 py-8 text-[14px] leading-relaxed text-white/80 sm:px-10 sm:py-10 sm:text-[15px]">
+              <p>
+                За допомогою нашої <span class="text-brand font-semibold">системи народних інвестицій</span> ви стаєте
+                партнером обраного проєкту з мінімальним внеском від
+                <span class="font-semibold text-white">2&nbsp;000 грн</span> та отримуєте прибуток від його доходу.
+              </p>
+
+              <p class="mt-4">
+                Ми робимо так, щоб <span class="text-brand font-semibold">допомога країні</span> працювала
+                <span class="font-semibold text-white">вдвічі</span>:
+                як дохід для вас і як постійний розвиток для України.
+              </p>
+
+              <p class="mt-4">
+                <span class="font-semibold text-white">Наша задача</span> — перетворити донати на інвестиції,
+                щоб ваша <span class="text-brand font-semibold">допомога країні</span> в майбутньому
+                ставала вашим доходом.
+              </p>
+
+              <p class="mt-4">
+                Ми втілюємо у <span class="text-brand font-semibold">життя</span> виробництва та стратегічні проєкти,
+                які роблять нашу країну і армію сильнішою, а ви як інвестор отримуєте
+                <span class="text-brand font-semibold">джерело доходу</span> та водночас робите добру справу.
+              </p>
+
+              <p class="mt-4 font-semibold text-white">
+                І найголовніше — тепер, завдяки народним інвестиціям,
+                практично кожен може долучитися до таких
+                <span class="text-brand">великих справ!</span>
+              </p>
+
+              <p class="mt-4">
+                Тепер, раніше закритий клуб, стає відкритим для кожного
+                за системою <span class="text-brand font-semibold">WIN&nbsp;WIN</span>.
+              </p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Mobile rules: сохраняем рамку, но не ломаем контент -->
+<style>
+  @media (max-width: 1024px) {
+    .absolute.inset-y-0.left-0.w-\[120px\],
+    .absolute.inset-y-0.right-0.w-\[120px\] { width: 72px !important; }
+  }
+  @media (max-width: 640px) {
+    .absolute.inset-y-0.left-0.w-\[120px\],
+    .absolute.inset-y-0.right-0.w-\[120px\] { display: none !important; }
+  }
+</style>
+</body>
+</html>

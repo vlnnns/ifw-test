@@ -1,0 +1,75 @@
+@font-face {
+    font-family: 'Actay Wide';
+    src: url('Actay/ActayWide-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Actay Wide';
+    src: url('Actay/ActayWide-BoldItalic.otf') format('opentype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+.font-bold{
+    font-family: 'Actay Wide';
+    font-weight: bold;
+    font-style: normal;
+}
+.font-black{
+    font-family: 'Actay Wide';
+    font-weight: bold;
+    font-style: normal;
+}
+/* Контейнер должен иметь отступы сверху и снизу, чтобы увеличенная карта не обрезалась */
+.status-swiper {
+    padding: 50px 0 !important; /* Даем место для масштаба 1.5 */
+    overflow: visible !important; /* Позволяем картам выходить за границы контейнера */
+}
+
+
+/* Состояние активного (центрального) слайда */
+.swiper-slide-active {
+    opacity: 1 !important;
+    transform: scale(1.4); /* 1.5 может быть многовато для мобильных, 1.4 — оптимально */
+    z-index: 10; /* Карта сверху всех */
+}
+
+/* Стили пагинации оставляем без изменений */
+.swiper-pagination-bullet {
+    width: 60px !important;
+    height: 4px !important;
+    border-radius: 2px !important;
+    background: #333 !important;
+    opacity: 1 !important;
+    transition: all 0.3s ease;
+}
+.swiper-pagination-bullet-active {
+    background: #6366F1 !important;
+    width: 100px !important;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+}
+
+@keyframes marquee2 {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(0%); }
+}
+
+.animate-marquee {
+    animation: marquee 60s linear infinite;
+}
+
+.animate-marquee2 {
+    animation: marquee2 60s linear infinite;
+}
+
+/* Опционально: замедление при наведении */
+.animate-marquee:hover,
+.animate-marquee2:hover {
+    animation-play-state: paused;
+}
