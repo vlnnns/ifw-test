@@ -33,73 +33,83 @@
             },
         };
     </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
 <body class="min-h-screen bg-dark overflow-x-hidden">
-<main class="relative mx-auto px-4 sm:px-8 pt-8 lg:pt-10">
+<main class="relative mx-auto pt-8 lg:pt-10">
 
     <!-- TOP BADGE (как на фото: справа, “врезан” в верхнюю рамку) -->
-    <div class="pointer-events-none absolute top-[7px] right-56 bottom-8 z-0">
+    <div class="pointer-events-none absolute top-3 right-20 sm:top-4 sm:right-56 bottom-8 z-0">
         <div class="bg-brand px-8 py-2">
-            <div class="text-[10px] font-bold tracking-[0.18em] text-[#29292B]">
+            <div class="text-[8px] sm:text-[10px] font-bold tracking-[0.18em] text-[#29292B]">
                 INVEST FREEDOM WIN
             </div>
         </div>
     </div>
 
     <!-- WHITE MAIN CONTAINER -->
-    <div class="overflow-hidden rounded-[48px] bg-panel relative z-10">
+    <div class="overflow-hidden rounded-[48px] bg-panel relative z-10 mt-2">
 
         <!-- NAV / HEADER -->
-        <header class="flex items-center justify-between px-6 pt-7 sm:px-10 sm:pt-9">
-            <a href="#" class="inline-flex items-center gap-3">
-                <img src="img/logo.png" alt="IFW" class="h-12 w-auto select-none object-contain" />
-            </a>
-
-            <nav class="hidden md:block">
-                <div class="rounded-full bg-white/70 px-2 py-4">
-                    <ul class="flex items-center gap-1 text-sm text-black/70 font-light">
-                        <li><a href="#" class="rounded-full px-4 py-2 hover:text-black">Головна</a></li>
-                        <li>
-                            <a
-                                    href="#"
-                                    class="rounded-full text-[#7867F4] px-4 py-2 text-brand"
-                            >
-                                Про нас
-                            </a>
-                        </li>
-                        <li><a href="#" class="rounded-full px-4 py-2 hover:text-black">Проєкти</a></li>
-                        <li><a href="#" class="rounded-full px-4 py-2 hover:text-black">Реферальна програма</a></li>
-                        <li><a href="#" class="rounded-full px-4 py-2 hover:text-black">FAQ</a></li>
-                    </ul>
-                </div>
-            </nav>
-
-            <button
-                    type="button"
-                    class="inline-flex items-center justify-center rounded-xl bg-white/70 px-3 py-2 text-sm font-semibold text-black shadow md:hidden"
+        <header
+                x-data="{ open: false }"
+                class="relative flex items-center justify-between px-6 pt-7 sm:px-10 sm:pt-9 z-50"
+        >
+            <div
+                    class="flex items-center justify-between w-full bg-[#EAEAEA] rounded-[60px] px-6 py-4 md:px-10 md:py-5 transition-all duration-300"
+                    :class="open ? 'rounded-b-none' : ''"
             >
-                Меню
-            </button>
+                <a href="#" class="inline-flex items-center gap-3">
+                    <img src="img/logo.png" alt="IFW" class="h-10 md:h-14 w-auto select-none object-contain" />
+                </a>
+
+                <nav class="hidden md:block">
+                    <div class="rounded-full bg-[#EAEAEA] px-4 py-2">
+                        <ul class="flex items-center gap-2 text-base text-black font-normal">
+                            <li><a href="#" class="px-3 py-2 hover:opacity-70 transition">Головна</a></li>
+                            <li><a href="#" class="text-[#7867F4] px-3 py-2">Про нас</a></li>
+                            <li><a href="#" class="px-3 py-2 hover:opacity-70 transition">Проєкти</a></li>
+                            <li><a href="#" class="px-3 py-2 hover:opacity-70 transition">Реферальна програма</a></li>
+                            <li><a href="#" class="px-3 py-2 hover:opacity-70 transition">FAQ</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <button
+                        @click="open = !open"
+                        type="button"
+                        class="flex flex-col gap-1.5 justify-center items-end w-10 h-10 md:hidden focus:outline-none"
+                >
+                    <span class="w-8 h-[3px] bg-black rounded-full transition-all" :class="open ? 'rotate-45 translate-y-2' : ''"></span>
+                    <span class="w-6 h-[3px] bg-black rounded-full transition-all" :class="open ? 'opacity-0' : ''"></span>
+                    <span class="w-8 h-[3px] bg-black rounded-full transition-all" :class="open ? '-rotate-45 -translate-y-2.5' : ''"></span>
+                </button>
+            </div>
+
+            <div
+                    x-show="open"
+                    x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="opacity-0 -translate-y-10"
+                    x-transition:enter-end="opacity-100 translate-y-0"
+                    class="absolute top-[calc(100%-1px)] left-6 right-6 bg-[#EAEAEA] rounded-b-[48px] px-10 pb-12 pt-6 shadow-2xl md:hidden"
+            >
+                <ul class="flex flex-col gap-8 text-2xl font-medium text-black">
+                    <li><a @click="open = false" href="#" class="hover:opacity-70 transition">Головна</a></li>
+                    <li><a @click="open = false" href="#" class="text-[#7867F4]">Про нас</a></li>
+                    <li><a @click="open = false" href="#" class="hover:opacity-70 transition">Проєкти</a></li>
+                    <li><a @click="open = false" href="#" class="hover:opacity-70 transition">Реферальна програма</a></li>
+                    <li><a @click="open = false" href="#" class="hover:opacity-70 transition">FAQ</a></li>
+                </ul>
+            </div>
         </header>
 
         <section class="relative px-6 pt-7 pb-10 sm:px-10 sm:pt-10 lg:pt-12 lg:pb-14">
             <!-- watermark background (как в макете: большие IFW + стрелка) -->
             <div class="pointer-events-none absolute inset-0 overflow-hidden">
-                <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[280px] font-black tracking-tight text-black/5 select-none hidden lg:block">
-                    IFW
-                </div>
-
-                <!-- mobile watermark big letters (чуть видны снизу) -->
-                <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 text-[240px] font-black tracking-tight text-black/5 select-none lg:hidden">
-                    IFW
-                </div>
-
-                <div class="absolute right-6 top-10 hidden h-[460px] w-[460px] opacity-[0.06] lg:block">
-                    <svg viewBox="0 0 200 200" class="h-full w-full">
-                        <path d="M40 160 L160 40" stroke="#000" stroke-width="18" stroke-linecap="round" fill="none"/>
-                        <path d="M122 40 H160 V78" stroke="#000" stroke-width="18" stroke-linecap="round" fill="none"/>
-                    </svg>
+                <div
+                        class="absolute inset-0 bg-cover bg-center bg-no-repeat select-none"
+                        style="background-image: url('img/logo-back.png');">
                 </div>
             </div>
 
@@ -108,8 +118,8 @@
                 <!-- LEFT -->
                 <div class="lg:col-span-6">
                     <!-- точные размеры: mobile как на макете, desktop крупнее -->
-                    <h1 class="font-bold tracking-tight leading-[0.9] text-[#1D1D1F]
-                       text-4xl sm:text-8xl">
+                    <h1 class="font-black leading-[0.9] text-[#1D1D1F]
+                       text-6xl sm:text-8xl">
                         INVEST<br />
                         FREEDOM<br />
                         <span class="text-brand">WIN</span>
@@ -122,20 +132,6 @@
                         Ви отримуєте можливість стати партнером масштабних виробництв та інших серйозних бізнес-проєктів,
                         при цьому не вкладаючи великі бюджети.
                     </p>
-
-                    <!-- button: на мобиле широкая как на макете -->
-                    <div class="mt-7">
-                        <a
-                                href="#video"
-                                class="inline-flex items-center justify-center rounded-full bg-brand
-           px-8 py-4
-           text-xl font-semibold text-white
-
-           hover:brightness-95 active:brightness-90"
-                        >
-                            Дізнатись більше
-                        </a>
-                    </div>
 
                 </div>
 
@@ -201,22 +197,21 @@
                 />
             </div>
 
-            <!-- Content frame with side lines + rounded corners -->
-            <div class="relative mt-10 rounded-[64px] border border-white/70 px-7 py-10 text-sm leading-relaxed text-white/80 sm:px-16 sm:py-20 sm:text-2xl">
+            <div class="relative mt-10 rounded-[64px] border border-white/70 px-7 py-10 text-lg leading-relaxed text-white/80 sm:px-16 sm:py-20 sm:text-2xl">
 
                 <p>
                     За допомогою нашої <span class="text-brand font-semibold">системи народних інвестицій</span> ви стаєте партнером
                     обраного проєкту з мінімальним внеском від
-                    <span class="font-semibold text-white">2&nbsp;000 грн</span> та отримуєте прибуток від його доходу.
+                    <span class="text-white">2 000 грн</span> та отримуєте прибуток від його доходу.
                 </p>
 
                 <p class="mt-6">
                     Ми робимо так, щоб <span class="text-brand font-semibold">допомога країні</span> працювала
-                    <span class="font-semibold text-white">вдвічі</span>: як дохід для вас і як постійний розвиток для України.
+                    <span class="text-brand font-semibold">в довгу</span>: як дохід для вас і як постійний розвиток для України.
                 </p>
 
                 <p class="mt-6">
-                    <span class="font-semibold text-white">Наша задача</span> — перетворити донати на інвестиції, щоб ваша
+                    <span class="text-brand font-semibold">Наша задача</span> — перетворити донати на інвестиції, щоб ваша
                     <span class="text-brand font-semibold">допомога країні</span> в майбутньому ставала вашим доходом.
                 </p>
 
@@ -226,17 +221,16 @@
                     <span class="text-brand font-semibold">джерело доходу</span> та водночас робите добру справу.
                 </p>
 
-                <p class="mt-6 font-semibold text-white">
-                    І найголовніше — тепер, завдяки народним інвестиціям, практично кожен може долучитися до таких
-                    <span class="text-brand">великих справ!</span>
+                <p class="mt-6">
+                    <span class="text-brand font-semibold">І найголовніше</span> — тепер, завдяки народним інвестиціям, практично кожен може долучитися до таких
+                    <span class="text-brand font-semibold">великих справ!</span>
                 </p>
 
                 <p class="mt-6">
                     Тепер, раніше закритий клуб, стає відкритим для кожного за системою
-                    <span class="text-brand font-semibold">WIN&nbsp;WIN</span>.
+                    <span class="text-brand font-semibold">WIN WIN.</span>
                 </p>
             </div>
-
         </div>
     </section>
 
@@ -250,14 +244,8 @@
 
             <div class="mt-10 grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-12">
                 <!-- Left text -->
-                <div class="lg:col-span-6">
-                    <div class="space-y-7 text-lg leading-relaxed text-white/80 sm:text-3xl">
-                        <p>
-                            Інвестуй у <span class="text-brand font-semibold">стратегічні проєкти України</span> від
-                            <span class="text-brand font-semibold">2&nbsp;000 грн</span> та заробляй щомісячний пасивний дохід
-                            від реального, важливого для країни бізнесу.
-                        </p>
-
+                <div class="lg:col-span-5 py-4 sm:py-12">
+                    <div class="space-y-7 text-lg leading-relaxed text-white/80 sm:text-2xl">
                         <p>
                             Інвесторам також доступні <span class="text-brand font-semibold">додаткові можливості</span> заробітку,
                             приємні бонуси, сувеніри та знижки у майбутніх проєктах.
@@ -282,7 +270,7 @@
                     </div>
 
                     <!-- Bottom strong statement -->
-                    <div class="mt-12 font-sans text-4xl font-semibold leading-[1.05] text-white sm:text-6xl">
+                    <div class="mt-10 sm:mt-24 font-sans text-3xl font-semibold leading-[1.05] text-white sm:text-5xl">
                         <span class="text-brand">IFW</span> твоя інвестиція<br />
                         в свободу = <span class="text-brand">перемога.</span>
                     </div>
@@ -290,7 +278,7 @@
 
                 <!-- Right image -->
                 <div class="lg:col-span-6">
-                    <div class="mx-auto max-w-[520px] lg:max-w-none">
+                    <div class="mx-auto max-w-[420px] lg:max-w-none">
                         <img
                                 src="img/logo3.png"
                                 alt="IFW chart blocks"
@@ -305,7 +293,7 @@
 
     <!-- PROJECTS SECTION + CARD OPEN (modal) -->
     <section id="projects" class="px-2 pb-16 sm:px-10">
-        <div class="rounded-[44px] bg-panel py-12 sm:py-14 px-6 sm:px-12">
+        <div class="rounded-[44px] bg-[#D8D9D8] py-12 sm:py-14 px-6 sm:px-12">
 
             <!-- Title -->
             <h2 class="text-center font-black tracking-tight text-[#1D1D1F]
@@ -314,14 +302,14 @@
             </h2>
 
             <!-- Subtitle -->
-            <p class="mx-auto mt-6 max-w-[720px] text-center text-lg leading-relaxed text-black/70">
+            <p class="mx-auto my-6 sm:my-10 max-w-[580px] text-center text-lg sm:text-xl leading-relaxed text-black/70">
                 Інвестуй <span class="font-semibold text-black/85">від 2000 грн</span> у важливі проєкти та вже зараз
                 <span class="font-semibold text-black/85">отримуй</span> пасивний <span class="font-semibold text-black/85">дохід</span>
                 з їхніх прибутків.
             </p>
 
             <!-- Lead line -->
-            <h3 class="my-10 mt-10 font-sans text-xl sm:text-4xl font-semibold text-[#1D1D1F]">
+            <h3 class="my-8 sm:my-20 font-sans text-xl text-center sm:text-4xl font-bold text-[#1D1D1F]">
                 Актуальні проєкти, які знаходяться в процесі збору бюджету для
                 <span class="text-brand">старту реалізації:</span>
             </h3>
@@ -333,75 +321,99 @@
                 <article class="project-card rounded-[44px] bg-dark text-white/85 overflow-hidden" data-project="p1">
                     <!-- COMPACT (CLOSED) -->
                     <div class="project-compact p-7 sm:p-10">
-                        <div class="grid gap-10 lg:grid-cols-12 lg:items-start">
-                            <!-- Left -->
-                            <div class="lg:col-span-6">
-                                <h4 class="font-sans text-lg sm:text-4xl font-semibold leading-tight">
-                                    <span class="text-brand">Проєкт №1</span> — Заклади народного харчування та сучасні кав’ярні.
-                                </h4>
+                        <div class="grid gap-10 lg:grid-cols-12 lg:items-center max-w-[1400px] mx-auto">
 
-                                <p class="mt-5 text-sm sm:text-lg leading-relaxed font-normal text-white/70 max-w-[520px]">
-                                    Ми створюємо мережу народних закладів харчування з унікальною моделлю: смачна та здорова їжа за собівартістю.
-                                </p>
+                            <div class="lg:col-span-6 flex flex-col justify-between py-4">
+                                <div>
+                                    <h4 class="font-sans text-[22px] sm:text-4xl font-semibold leading-tight max-w-[550px]">
+                                        <span class="text-brand">Проєкт №1</span> — Заклади народного харчування та сучасні кав’ярні.
+                                    </h4>
 
-                                <button class="mt-6 font-sans font-xl text-white/85 hover:text-white" data-toggle type="button">
-                                    (Тисни <span class="font-semibold">Про проєкт</span> щоб дізнатись більше)
-                                </button>
+                                    <p class="mt-4 text-sm sm:text-lg leading-relaxed font-normal text-white/60 max-w-[500px]">
+                                        Ми створюємо мережу народних закладів харчування з унікальною моделлю: смачна та здорова їжа за собівартістю.
+                                    </p>
 
-                                <div class="mt-10">
-                                    <div class="font-sans text-xl sm:text-4xl font-semibold">
+                                </div>
+
+                                <div class="mt-10 lg:mt-16">
+                                    <div class="font-sans text-xl sm:text-3xl font-semibold">
                                         Загальна <span class="text-brand">сума збору:</span>
                                     </div>
-                                    <div class="mt-3 font-sans text-xl sm:text-5xl font-semibold leading-tight">
-                                        350 000 $<br />
-                                        <span class="text-white/70">(≈ 15 050 000 грн)</span>
+                                    <div class="mt-2 font-sans text-xl sm:text-3xl font-semibold leading-tight">
+                                        350 000 $
+                                        <br>(≈ 15 050 000 грн)
                                     </div>
-                                </div>
 
-                                <button
-                                        data-toggle
-                                        type="button"
-                                        class="mt-10 inline-flex items-center justify-center rounded-full bg-brand px-7 py-4 text-[15px] font-semibold text-white
-            hover:brightness-95 active:brightness-90"
-                                >
-                                    Про проєкт
-                                </button>
+                                    <button
+                                            data-toggle
+                                            type="button"
+                                            class="hidden sm:block mt-8 inline-flex items-center justify-center rounded-full bg-brand px-10 py-4 text-[16px] font-semibold text-white hover:brightness-110 active:scale-95 transition-all"
+                                    >
+                                        Про проєкт
+                                    </button>
+                                </div>
                             </div>
 
-                            <!-- Right -->
-                            <div class="lg:col-span-6">
-                                <div class="rounded-[28px] overflow-hidden bg-white/5">
-                                    <img src="img/project1/project1-1.png" alt="Project Image 1" class="w-full h-auto object-cover" />
+                            <div class="lg:col-span-6 flex flex-col gap-6">
+                                <div class="rounded-[32px] overflow-hidden bg-white/5 shadow-2xl">
+                                    <img src="img/project1/project1.png" alt="Project Image 1" class="w-full h-auto aspect-[16/9] object-cover" />
                                 </div>
 
-                                <div class="mt-6 grid gap-6 sm:grid-cols-2 items-start">
-                                    <div class="text-white/70 text-lg leading-tight">
-                                        <div class="text-white/85 font-semibold mb-2">Вже залучено у проєкті:</div>
-                                        <div class="text-white/85 font-semibold">89 250 $ / 350 000 $</div>
-                                        <div class="mt-3"><span class="text-white/85 font-semibold">149</span> сертифікатів вже активовано</div>
-                                        <div class="mt-3">Кількість сертифікатів обмежена.</div>
-                                    </div>
+                                <div class="project-card grid grid-cols-1 sm:grid-cols-12 gap-4 items-center" data-project-index="1">
 
-                                    <div class="rounded-[22px] bg-white/5 p-4 border border-white/10">
-                                        <div class="flex items-center justify-between text-white/70 text-[12px]">
-                                            <span>Проєкт №1</span>
-                                            <span class="font-semibold text-white">25,5 %</span>
+                                    <div class="sm:col-span-5 flex flex-col justify-center">
+                                        <div class="text-white/60 text-xs sm:text-sm mb-1">Вже залучено у проєкті:</div>
+                                        <div class="text-base font-semibold text-white mb-4 tracking-tight">
+                                            <span class="raised-text">0</span> $ / <span class="goal-text">0</span> $
                                         </div>
 
-                                        <div class="mt-3 h-[92px] rounded-[14px] bg-black/20 overflow-hidden relative">
-                                            <div class="absolute inset-x-0 bottom-0 h-[2px] bg-white/10"></div>
-                                            <div class="absolute left-3 bottom-3 text-[11px] text-white/50">350K</div>
-                                            <svg viewBox="0 0 240 100" class="absolute inset-0 h-full w-full">
-                                                <path d="M12 84 L70 76 L115 62 L165 56 L205 34 L232 18"
-                                                      stroke="#7667ED" stroke-width="3" fill="none" stroke-linecap="round" />
-                                                <path d="M12 84 L70 76 L115 62 L165 56 L205 34 L232 18 L232 100 L12 100 Z"
-                                                      fill="rgba(118,103,237,0.20)" />
-                                                <circle cx="12" cy="84" r="4" fill="#7667ED" />
+                                        <div class="text-white/60 mb-4 text-sm">
+                                            <span class="certs-text font-semibold">0</span> сертифікатів активовано
+                                        </div>
+
+                                        <div class="text-white/60 text-sm">
+                                            Кількість сертифікатів обмежена.
+                                        </div>
+                                    </div>
+
+                                    <div class="sm:col-span-7 bg-white/5 p-5 rounded-[28px] border border-white/10 relative flex flex-col justify-between min-h-[150px]">
+                                        <div class="flex flex-col items-start">
+                                            <span class="text-white/40 text-[10px] font-bold">Проєкт №1</span>
+                                            <span class="percent-text text-2xl font-bold text-white tracking-tighter">0 %</span>
+                                        </div>
+
+                                        <div class="h-[60px] relative mt-2 w-full">
+                                            <svg class="chart-svg w-full h-full overflow-visible" viewBox="0 0 300 60" preserveAspectRatio="none">
+                                                <defs>
+                                                    <linearGradient id="fillGradient" x1="0" y1="0" x2="0" y2="1">
+                                                        <stop offset="0%" stop-color="#7667ED" stop-opacity="0.4" />
+                                                        <stop offset="100%" stop-color="#7667ED" stop-opacity="0" />
+                                                    </linearGradient>
+                                                </defs>
+                                                <line x1="75" y1="0" x2="75" y2="60" stroke="white" stroke-opacity="0.05" />
+                                                <line x1="150" y1="0" x2="150" y2="60" stroke="white" stroke-opacity="0.05" />
+                                                <line x1="225" y1="0" x2="225" y2="60" stroke="white" stroke-opacity="0.05" />
+
+                                                <path class="path-total" d="M0,55 L60,45 L120,35 L180,30 L240,20 L300,5" stroke="rgba(255,255,255,0.8)" stroke-width="4" fill="none" />
+                                                <path class="path-fill" fill="url(#fillGradient)" d="" />
+                                                <path class="path-progress" stroke="#7667ED" stroke-width="4" fill="none" stroke-linecap="round" d="" />
+
+                                                <circle cx="0" cy="55" r="3.5" fill="#7667ED" />
+                                                <circle class="dot-current" r="5" fill="#7667ED" stroke="#121212" stroke-width="1.5" />
                                             </svg>
+                                            <div class="absolute right-0 -bottom-2 text-[9px] text-white/30 font-bold uppercase">350K</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <button
+                                    data-toggle
+                                    type="button"
+                                    class="block sm:hidden mt-2 inline-flex items-center justify-center rounded-full bg-brand px-10 py-4 text-[16px] font-semibold text-white hover:brightness-110 active:scale-95 transition-all"
+                            >
+                                Про проєкт
+                            </button>
                         </div>
                     </div>
 
@@ -414,10 +426,24 @@
                                     <span class="text-brand">Проєкт №1</span> — Заклади народного харчування та сучасні кав’ярні.
                                 </h4>
 
-                                <div class="mt-6 space-y-5 text-sm sm:text-2xl leading-relaxed text-white/70">
-                                    <p>Ми створюємо мережу народних закладів харчування з унікальною моделлю: смачна та здорова їжа за собівартістю.</p>
-                                    <p>У закладах запроваджується система абонементів (1, 3, 6 місяців або рік), що надає доступ до їжі та напоїв за собівартістю.</p>
-                                    <p>Інвестори стають співвласниками закладів і отримують частку прибутку, а також можливість завжди харчуватися за собівартістю.</p>
+                                <div class="mt-6 space-y-5 text-sm sm:text-lg leading-relaxed text-white/70">
+                                    <p>Ми створюємо мережу народних закладів харчування з унікальною моделлю: смачна та здорова їжа за собівартістю.
+
+                                        <br><br>У закладах запроваджується система абонементів
+                                        (1, 3, 6 місяців або рік), що надає доступ до їжі та напоїв за собівартістю. Військові, ветерани, пенсіонери, внутрішньо переміщені особи, люди з інвалідністю, сімʼї полеглих Героїв та інвестори можуть харчуватися за собівартістю без придбання абонементу.
+
+                                        <br><br>Для інших відвідувачів ціни залишаються нижчими за ринкові, з помірною націнкою, яка забезпечує стабільну операційну модель і прибутковість бізнесу. Підсумковий чек у будь-якому випадку буде нижчим, ніж у конкурентів.
+                                        Завдяки цій концепції харчування в закладах стає вигіднішим, ніж приготування їжі вдома. Власники абонементів отримують найкращу ціну на ринку та одночасно підтримують доступне харчування для пільгових категорій.
+
+                                        <br><br>Окремим напрямком стане запуск мережі кав’ярень за аналогічною моделлю: пільгові категорії та власники абонементів отримують продукцію за собівартістю, інші відвідувачі — за конкурентною ринковою ціною.
+
+                                        <br><br>Інвестори стають співвласниками закладів і отримують частку прибутку бізнесу, а також можливість завжди харчуватися за собівартістю та користуватися спеціальними цінами в кав’ярнях. Інвестиція від 2 000 грн може окупитися менш ніж за місяць лише за рахунок власного харчування.
+
+                                        <br><br>Кожен заклад функціонуватиме як соціальний хаб: можливість зарядити пристрої, зігрітися, попрацювати або безпечно провести час. Планується підбір приміщень із підвальними просторами для облаштування укриттів.
+
+                                        <br><br>У майбутньому передбачене масштабування мережі — декілька точок у кожному місті України. Наразі триває розробка сучасного дизайну закладів, пошук оптимальних локацій та створення меню разом із досвідченими кухарями й технологами.
+                                    </p>
+
                                     <p class="text-white/85 font-semibold">(Деталі — в інформаційних зображеннях)</p>
                                 </div>
 
@@ -434,12 +460,9 @@
 
                             <!-- Right: Image & stats -->
                             <div class="lg:col-span-5">
-                                <div class="rounded-[28px] overflow-hidden bg-white/5 p-3">
+                                <div class="rounded-[28px] overflow-hidden bg-[#7867F4] p-3">
                                     <!-- Vertical auto-scroll gallery -->
                                     <div class="relative overflow-hidden rounded-[22px] h-[520px] sm:h-[620px]" data-vscroll data-gallery-group="project1">
-                                        <div class="pointer-events-none absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-dark to-transparent z-10"></div>
-                                        <div class="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-dark to-transparent z-10"></div>
-
                                         <!-- Track (duplicated for infinite scroll) -->
                                         <div class="vtrack flex flex-col gap-3 will-change-transform" data-vtrack>
                                             <!-- ITEM 1 -->
@@ -466,36 +489,62 @@
                                 </div>
 
 
-                                <div class="mt-6 grid gap-6">
-                                    <div class="rounded-[22px] bg-white/5 p-4 border border-white/10">
-                                        <div class="flex items-center justify-between text-white/70 text-[12px]">
-                                            <span>Проєкт №1</span>
-                                            <span class="font-semibold text-white">25,5 %</span>
-                                        </div>
-                                        <div class="mt-3 h-[92px] rounded-[14px] bg-black/20 overflow-hidden relative">
-                                            <div class="absolute inset-x-0 bottom-0 h-[2px] bg-white/10"></div>
-                                            <div class="absolute left-3 bottom-3 text-[11px] text-white/50">350K</div>
-                                            <svg viewBox="0 0 240 100" class="absolute inset-0 h-full w-full">
-                                                <path d="M12 84 L70 76 L115 62 L165 56 L205 34 L232 18"
-                                                      stroke="#7667ED" stroke-width="3" fill="none" stroke-linecap="round" />
-                                                <path d="M12 84 L70 76 L115 62 L165 56 L205 34 L232 18 L232 100 L12 100 Z"
-                                                      fill="rgba(118,103,237,0.20)" />
-                                                <circle cx="12" cy="84" r="4" fill="#7667ED" />
-                                            </svg>
-                                        </div>
-                                    </div>
+                                <div class="mt-6 grid gap-4">
+                                    <div class="project-card grid grid-cols-1 gap-4 items-center " data-project-index="1">
 
-                                    <div class="text-white/70 text-[14px] leading-relaxed">
-                                        <div class="text-white/85 font-semibold mb-2">Вже залучено у проєкті:</div>
-                                        <div class="text-white/85 font-semibold">89 250 $ / 350 000 $</div>
-                                        <div class="mt-3"><span class="text-white/85 font-semibold">149</span> сертифікатів вже активовано</div>
-                                        <div class="mt-3">Кількість сертифікатів обмежена.</div>
+
+
+                                        <div class="sm:col-span-7 bg-white/5 p-5 rounded-[28px] border border-white/10 relative flex flex-col justify-between min-h-[150px]">
+                                            <div class="flex flex-col items-start">
+                                                <span class="text-white/40 text-[10px] font-bold">Проєкт №1</span>
+                                                <span class="percent-text text-2xl font-bold text-white tracking-tighter">0 %</span>
+                                            </div>
+
+                                            <div class="h-[60px] relative mt-2 w-full">
+                                                <svg class="chart-svg w-full h-full overflow-visible" viewBox="0 0 300 60" preserveAspectRatio="none">
+                                                    <defs>
+                                                        <linearGradient id="fillGradient" x1="0" y1="0" x2="0" y2="1">
+                                                            <stop offset="0%" stop-color="#7667ED" stop-opacity="0.4" />
+                                                            <stop offset="100%" stop-color="#7667ED" stop-opacity="0" />
+                                                        </linearGradient>
+                                                    </defs>
+                                                    <line x1="75" y1="0" x2="75" y2="60" stroke="white" stroke-opacity="0.05" />
+                                                    <line x1="150" y1="0" x2="150" y2="60" stroke="white" stroke-opacity="0.05" />
+                                                    <line x1="225" y1="0" x2="225" y2="60" stroke="white" stroke-opacity="0.05" />
+
+                                                    <path class="path-total" d="M0,55 L60,45 L120,35 L180,30 L240,20 L300,5" stroke="rgba(255,255,255,0.8)" stroke-width="4" fill="none" />
+                                                    <path class="path-fill" fill="url(#fillGradient)" d="" />
+                                                    <path class="path-progress" stroke="#7667ED" stroke-width="4" fill="none" stroke-linecap="round" d="" />
+
+                                                    <circle cx="0" cy="55" r="3.5" fill="#7667ED" />
+                                                    <circle class="dot-current" r="5" fill="#7667ED" stroke="#121212" stroke-width="1.5" />
+                                                </svg>
+                                                <div class="absolute right-0 -bottom-2 text-[9px] text-white/30 font-bold uppercase">350K</div>
+                                            </div>
+                                        </div>
+                                        <div class="sm:col-span-5 flex flex-col items-start sm:items-end">
+
+                                            <div class="text-left w-fit">
+                                                <div class="text-white/60 text-xs sm:text-sm mb-1">Вже залучено у проєкті:</div>
+                                                <div class="text-base font-semibold text-white mb-4 tracking-tight">
+                                                    <span class="raised-text">0</span> $ / <span class="goal-text">0</span> $
+                                                </div>
+
+                                                <div class="text-white/60 mb-4 text-sm">
+                                                    <span class="certs-text font-semibold">0</span> сертифікатів вже активовано
+                                                </div>
+
+                                                <div class="text-white/60 text-sm">
+                                                    Кількість сертифікатів обмежена.
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <button
                                             type="button"
                                             class="inline-flex items-center justify-center rounded-full bg-brand px-7 py-4 text-[15px] font-semibold text-white
-                       shadow-[0_18px_40px_rgba(118,103,237,0.35)] hover:brightness-95 active:brightness-90"
+                       hover:brightness-95 active:brightness-90"
                                     >
                                         Звʼязатись з менеджером
                                     </button>
@@ -503,7 +552,7 @@
                                     <button
                                             data-toggle
                                             type="button"
-                                            class="mt-4 inline-flex items-center justify-center rounded-full bg-white/10 px-6 py-4
+                                            class="mt-2 inline-flex items-center justify-center rounded-full bg-white/10 px-6 py-4
          text-[14px] font-semibold text-white/85 hover:bg-white/15 hover:text-white"
                                     >
                                         Закрити
@@ -518,77 +567,99 @@
                 <article class="project-card rounded-[44px] bg-dark text-white/85 overflow-hidden" data-project="p2">
                     <!-- COMPACT (CLOSED) -->
                     <div class="project-compact p-7 sm:p-10">
-                        <div class="grid gap-10 lg:grid-cols-12 lg:items-start">
-                            <!-- Left -->
-                            <div class="lg:col-span-6">
-                                <h4 class="font-sans text-lg sm:text-4xl font-semibold leading-tight">
-                                    <span class="text-brand">Проєкт №2</span> — Народна оборонна промисловість /<br />
-                                    оборонний кластер.
-                                </h4>
+                        <div class="grid gap-10 lg:grid-cols-12 lg:items-center max-w-[1400px] mx-auto">
 
-                                <p class="mt-5 text-sm sm:text-lg leading-relaxed font-normal text-white/70 max-w-[520px]">
-                                    Оборонний кластер — це єдина виробничо-сервісна екосистема підприємств під одним брендом для посилення
-                                    обороноздатності України та підтримки ЗСУ.
-                                </p>
+                            <div class="lg:col-span-6 flex flex-col justify-between py-4">
+                                <div>
+                                    <h4 class="font-sans text-[22px] sm:text-4xl font-semibold leading-tight max-w-[550px]">
+                                        <span class="text-brand">Проєкт №2</span> — Народна оборонна промисловість / оборонний кластер.
+                                    </h4>
 
-                                <button class="mt-6 font-sans font-xl text-white/85 hover:text-white" data-toggle type="button">
-                                    (Тисни <span class="font-semibold">Про проєкт</span> щоб дізнатись більше)
-                                </button>
+                                    <p class="mt-4 text-sm sm:text-lg leading-relaxed font-normal text-white/60 max-w-[500px]">
+                                        Оборонний кластер — це єдина виробничо-сервісна екосистема підприємств під одним брендом для посилення обороноздатності України та підтримки ЗСУ.
+                                    </p>
+                                </div>
 
-                                <div class="mt-10">
-                                    <div class="font-sans text-xl sm:text-4xl font-semibold">
+                                <div class="mt-10 lg:mt-16">
+                                    <div class="font-sans text-xl sm:text-3xl font-semibold">
                                         Загальна <span class="text-brand">сума збору:</span>
                                     </div>
-                                    <div class="mt-3 font-sans text-xl sm:text-5xl font-semibold leading-tight">
-                                        500 000 $<br />
-                                        <span class="text-white/70">(≈ 21 500 000 грн)</span>
+                                    <div class="mt-2 font-sans text-xl sm:text-3xl font-semibold leading-tight">
+                                        500 000 $
+                                        <br><span class="text-white/50">(≈ 21 500 000 грн)</span>
                                     </div>
-                                </div>
 
-                                <button
-                                        data-toggle
-                                        type="button"
-                                        class="mt-10 inline-flex items-center justify-center rounded-full bg-brand px-7 py-4 text-[15px] font-semibold text-white
-                    hover:brightness-95 active:brightness-90"
-                                >
-                                    Про проєкт
-                                </button>
+                                    <button
+                                            data-toggle
+                                            type="button"
+                                            class="hidden sm:block mt-8 inline-flex items-center justify-center rounded-full bg-brand px-10 py-4 text-[16px] font-semibold text-white hover:brightness-110 active:scale-95 transition-all"
+                                    >
+                                        Про проєкт
+                                    </button>
+                                </div>
                             </div>
 
-                            <!-- Right -->
-                            <div class="lg:col-span-6">
-                                <div class="rounded-[28px] overflow-hidden bg-white/5">
-                                    <img src="img/project2/project2.png" alt="Оборонний кластер" class="w-full h-auto object-cover" />
+                            <div class="lg:col-span-6 flex flex-col gap-6">
+                                <div class="rounded-[32px] overflow-hidden bg-white/5 shadow-2xl">
+                                    <img src="img/project2/project2.png" alt="Project Image 2" class="w-full h-auto aspect-[16/9] object-cover" />
                                 </div>
 
-                                <div class="mt-6 grid gap-6 sm:grid-cols-2 items-start">
-                                    <div class="text-white/70 text-lg leading-tight">
-                                        <div class="text-white/85 font-semibold mb-2">Вже залучено у проєкті:</div>
-                                        <div class="text-white/85 font-semibold">171 650 $ / 500 000 $</div>
-                                        <div class="mt-3"><span class="text-white/85 font-semibold">413</span> сертифікатів вже активовано</div>
-                                        <div class="mt-3">Кількість сертифікатів обмежена.</div>
+                                <div class="project-card grid grid-cols-1 sm:grid-cols-12 gap-4 items-center" data-project-index="2">
+
+                                    <div class="sm:col-span-5 flex flex-col items-start">
+                                        <div class="text-left w-fit">
+                                            <div class="text-white/60 text-xs sm:text-sm mb-1">Вже залучено у проєкті:</div>
+                                            <div class="text-base font-semibold text-white mb-4 tracking-tight">
+                                                <span class="raised-text">0</span> $ / <span class="goal-text">0</span> $
+                                            </div>
+
+                                            <div class="text-white/60 mb-4 text-sm whitespace-nowrap">
+                                                <span class="certs-text font-semibold">0</span> сертифікатів вже активовано
+                                            </div>
+
+                                            <div class="text-white/60 text-sm">
+                                                Кількість сертифікатів обмежена.
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    <div class="rounded-[22px] bg-white/5 p-4 border border-white/10">
-                                        <div class="flex items-center justify-between text-white/70 text-[12px]">
-                                            <span>Проєкт №2</span>
-                                            <span class="font-semibold text-white">34 %</span>
+                                    <div class="sm:col-span-7 bg-white/5 p-5 rounded-[28px] border border-white/10 relative flex flex-col justify-between min-h-[150px]">
+                                        <div class="flex flex-col items-start">
+                                            <span class="text-white/40 text-[10px] font-bold">Проєкт №2</span>
+                                            <span class="percent-text text-2xl font-bold text-white tracking-tighter">0 %</span>
                                         </div>
 
-                                        <div class="mt-3 h-[92px] rounded-[14px] bg-black/20 overflow-hidden relative">
-                                            <div class="absolute inset-x-0 bottom-0 h-[2px] bg-white/10"></div>
-                                            <div class="absolute left-3 bottom-3 text-[11px] text-white/50">500K</div>
-                                            <svg viewBox="0 0 240 100" class="absolute inset-0 h-full w-full">
-                                                <path d="M12 86 L64 80 L104 72 L150 58 L190 50 L220 40 L232 22"
-                                                      stroke="#7667ED" stroke-width="3" fill="none" stroke-linecap="round" />
-                                                <path d="M12 86 L64 80 L104 72 L150 58 L190 50 L220 40 L232 22 L232 100 L12 100 Z"
-                                                      fill="rgba(118,103,237,0.20)" />
-                                                <circle cx="12" cy="86" r="4" fill="#7667ED" />
+                                        <div class="h-[60px] relative mt-2 w-full">
+                                            <svg class="chart-svg w-full h-full overflow-visible" viewBox="0 0 300 60" preserveAspectRatio="none">
+                                                <defs>
+                                                    <linearGradient id="fillGradient2" x1="0" y1="0" x2="0" y2="1">
+                                                        <stop offset="0%" stop-color="#7667ED" stop-opacity="0.4" />
+                                                        <stop offset="100%" stop-color="#7667ED" stop-opacity="0" />
+                                                    </linearGradient>
+                                                </defs>
+                                                <line x1="75" y1="0" x2="75" y2="60" stroke="white" stroke-opacity="0.05" />
+                                                <line x1="150" y1="0" x2="150" y2="60" stroke="white" stroke-opacity="0.05" />
+                                                <line x1="225" y1="0" x2="225" y2="60" stroke="white" stroke-opacity="0.05" />
+
+                                                <path class="path-total" d="M0,55 L60,48 L120,38 L180,32 L240,25 L300,5" stroke="rgba(255,255,255,0.8)" stroke-width="4" fill="none" />
+                                                <path class="path-fill" fill="url(#fillGradient2)" d="" />
+                                                <path class="path-progress" stroke="#7667ED" stroke-width="4" fill="none" stroke-linecap="round" d="" />
+
+                                                <circle cx="0" cy="55" r="3.5" fill="#7667ED" />
+                                                <circle class="dot-current" r="5" fill="#7667ED" stroke="#121212" stroke-width="1.5" />
                                             </svg>
+                                            <div class="absolute right-0 -bottom-2 text-[9px] text-white/30 font-bold uppercase">500K</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <button
+                                    data-toggle
+                                    type="button"
+                                    class="block sm:hidden mt-2 inline-flex items-center justify-center rounded-full bg-brand px-10 py-4 text-[16px] font-semibold text-white hover:brightness-110 active:scale-95 transition-all"
+                            >
+                                Про проєкт
+                            </button>
                         </div>
                     </div>
 
@@ -601,14 +672,16 @@
                                     <span class="text-brand">Проєкт №2</span> — Народна оборонна промисловість / оборонний кластер.
                                 </h4>
 
-                                <div class="mt-6 space-y-5 text-sm sm:text-2xl leading-relaxed text-white/70">
-                                    <p>Оборонний кластер — це єдина виробничо-сервісна екосистема підприємств під одним брендом для посилення
-                                        обороноздатності України та підтримки ЗСУ.</p>
-                                    <p>Мета кластера — об’єднати критично важливі напрями для оптимізації витрат, пришвидшення виконання
-                                        замовлень і забезпечення стабільного постачання продукції та послуг оборонному сектору.</p>
-                                    <p>Запуск планується поетапно з можливістю масштабування залежно від потреб. Локації обиратимуться з
-                                        урахуванням логістики, безпеки та кадрового потенціалу.</p>
-                                    <p class="text-white/85 font-semibold">Основні напрями діяльності та технологічні можливості:</p>
+                                <div class="mt-6 space-y-5 text-sm sm:text-lg leading-relaxed text-white/70">
+                                    <p>Оборонний кластер — це єдина виробничо-сервісна екосистема підприємств під одним брендом для посилення обороноздатності України та підтримки ЗСУ.
+
+                                        <br><br>Мета кластера — об’єднати критично важливі напрями для оптимізації витрат, пришвидшення виконання замовлень і забезпечення стабільного постачання продукції та послуг оборонному сектору. Проєкт поєднує комерційну ефективність зі стратегічною місією — зміцнення оборони країни.
+
+                                        <br><br>Запуск планується поетапно з можливістю масштабування залежно від потреб. Локації обиратимуться з урахуванням логістики, безпеки та кадрового потенціалу.
+
+                                        <br><br>У перспективі кластер має отримати статус критично важливого підприємства, що дозволить бронювати співробітників, розширювати виробництво та формувати сталу національну оборонно-промислову мережу. Також передбачено навчання та працевлаштування ветеранів, ВПО, жінок і студентів до роботи на підприємствах.
+
+                                    <p >Основні напрями діяльності та технологічні можливості:</p>
                                     <ul class="list-disc pl-5 space-y-1">
                                         <li>ремонт і модернізація транспорту та спеціалізованої техніки;</li>
                                         <li>бронювання, фарбування в мілітарі-кольори та доопрацювання транспорту;</li>
@@ -633,12 +706,9 @@
 
                             <!-- Right: Image & stats -->
                             <div class="lg:col-span-5">
-                                <div class="rounded-[28px] overflow-hidden bg-white/5 p-3">
+                                <div class="rounded-[28px] overflow-hidden bg-[#7867F4] p-3">
                                     <!-- Vertical auto-scroll gallery -->
                                     <div class="relative overflow-hidden rounded-[22px] h-[520px] sm:h-[620px]" data-vscroll data-gallery-group="project2">
-                                        <div class="pointer-events-none absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-dark to-transparent z-10"></div>
-                                        <div class="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-dark to-transparent z-10"></div>
-
                                         <!-- Track (duplicated for infinite scroll) -->
                                         <div class="vtrack flex flex-col gap-3 will-change-transform" data-vtrack>
                                             <!-- ITEM 1 -->
@@ -664,36 +734,61 @@
                                     </div>
                                 </div>
 
-                                <div class="mt-6 grid gap-6">
-                                    <div class="rounded-[22px] bg-white/5 p-4 border border-white/10">
-                                        <div class="flex items-center justify-between text-white/70 text-[12px]">
-                                            <span>Проєкт №2</span>
-                                            <span class="font-semibold text-white">34 %</span>
-                                        </div>
-                                        <div class="mt-3 h-[92px] rounded-[14px] bg-black/20 overflow-hidden relative">
-                                            <div class="absolute inset-x-0 bottom-0 h-[2px] bg-white/10"></div>
-                                            <div class="absolute left-3 bottom-3 text-[11px] text-white/50">500K</div>
-                                            <svg viewBox="0 0 240 100" class="absolute inset-0 h-full w-full">
-                                                <path d="M12 86 L64 80 L104 72 L150 58 L190 50 L220 40 L232 22"
-                                                      stroke="#7667ED" stroke-width="3" fill="none" stroke-linecap="round" />
-                                                <path d="M12 86 L64 80 L104 72 L150 58 L190 50 L220 40 L232 22 L232 100 L12 100 Z"
-                                                      fill="rgba(118,103,237,0.20)" />
-                                                <circle cx="12" cy="86" r="4" fill="#7667ED" />
-                                            </svg>
-                                        </div>
-                                    </div>
+                                <div class="mt-6 grid gap-4">
+                                    <div class="project-card grid grid-cols-1 gap-4 items-center " data-project-index="2">
 
-                                    <div class="text-white/70 text-[14px] leading-relaxed">
-                                        <div class="text-white/85 font-semibold mb-2">Вже залучено у проєкті:</div>
-                                        <div class="text-white/85 font-semibold">171 650 $ / 500 000 $</div>
-                                        <div class="mt-3"><span class="text-white/85 font-semibold">413</span> сертифікатів вже активовано</div>
-                                        <div class="mt-3">Кількість сертифікатів обмежена.</div>
+
+                                        <div class="sm:col-span-7 bg-white/5 p-5 rounded-[28px] border border-white/10 relative flex flex-col justify-between min-h-[150px]">
+                                            <div class="flex flex-col items-start">
+                                                <span class="text-white/40 text-[10px] font-bold">Проєкт №2</span>
+                                                <span class="percent-text text-2xl font-bold text-white tracking-tighter">0 %</span>
+                                            </div>
+
+                                            <div class="h-[60px] relative mt-2 w-full">
+                                                <svg class="chart-svg w-full h-full overflow-visible" viewBox="0 0 300 60" preserveAspectRatio="none">
+                                                    <defs>
+                                                        <linearGradient id="fillGradient" x1="0" y1="0" x2="0" y2="1">
+                                                            <stop offset="0%" stop-color="#7667ED" stop-opacity="0.4" />
+                                                            <stop offset="100%" stop-color="#7667ED" stop-opacity="0" />
+                                                        </linearGradient>
+                                                    </defs>
+                                                    <line x1="75" y1="0" x2="75" y2="60" stroke="white" stroke-opacity="0.05" />
+                                                    <line x1="150" y1="0" x2="150" y2="60" stroke="white" stroke-opacity="0.05" />
+                                                    <line x1="225" y1="0" x2="225" y2="60" stroke="white" stroke-opacity="0.05" />
+
+                                                    <path class="path-total" d="M0,55 L60,45 L120,35 L180,30 L240,20 L300,5" stroke="rgba(255,255,255,0.8)" stroke-width="4" fill="none" />
+                                                    <path class="path-fill" fill="url(#fillGradient)" d="" />
+                                                    <path class="path-progress" stroke="#7667ED" stroke-width="4" fill="none" stroke-linecap="round" d="" />
+
+                                                    <circle cx="0" cy="55" r="3.5" fill="#7667ED" />
+                                                    <circle class="dot-current" r="5" fill="#7667ED" stroke="#121212" stroke-width="1.5" />
+                                                </svg>
+                                                <div class="absolute right-0 -bottom-2 text-[9px] text-white/30 font-bold uppercase">500K</div>
+                                            </div>
+                                        </div>
+                                        <div class="sm:col-span-5 flex flex-col items-start sm:items-end">
+
+                                            <div class="text-left w-fit">
+                                                <div class="text-white/60 text-xs sm:text-sm mb-1">Вже залучено у проєкті:</div>
+                                                <div class="text-base font-semibold text-white mb-4 tracking-tight">
+                                                    <span class="raised-text">0</span> $ / <span class="goal-text">0</span> $
+                                                </div>
+
+                                                <div class="text-white/60 mb-4 text-sm">
+                                                    <span class="certs-text font-semibold">0</span> сертифікатів вже активовано
+                                                </div>
+
+                                                <div class="text-white/60 text-sm">
+                                                    Кількість сертифікатів обмежена.
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <button
                                             type="button"
                                             class="inline-flex items-center justify-center rounded-full bg-brand px-7 py-4 text-[15px] font-semibold text-white
-                            shadow-[0_18px_40px_rgba(118,103,237,0.35)] hover:brightness-95 active:brightness-90"
+                            hover:brightness-95 active:brightness-90"
                                     >
                                         Звʼязатись з менеджером
                                     </button>
@@ -701,7 +796,7 @@
                                     <button
                                             data-toggle
                                             type="button"
-                                            class="mt-4 inline-flex items-center justify-center rounded-full bg-white/10 px-6 py-4
+                                            class="mt-2 inline-flex items-center justify-center rounded-full bg-white/10 px-6 py-4
                              text-[14px] font-semibold text-white/85 hover:bg-white/15 hover:text-white"
                                     >
                                         Закрити
@@ -714,17 +809,17 @@
 
             </div>
 
-            <section class="bg-[#D9D9D9] py-16 font-sans text-[#1A1A1A]">
+            <section class="py-16 font-sans text-[#1A1A1A]">
                 <div class="space-y-10">
 
-                    <p class="text-xl md:text-2xl leading-relaxed">
+                    <p class="text-lg sm:text-xl leading-relaxed">
                         <span class="font-bold">90% доходів</span> від чистого прибутку належать інвесторам
                         <span class="font-bold">(тобто Вам)</span>. Чим більше ви інвестуєте в проєкт, тим
                         <span class="font-bold">більший дохід</span> отримуєте з його чистого прибутку.
                         Усе логічно та справедливо.
                     </p>
 
-                    <p class="text-xl md:text-2xl leading-relaxed">
+                    <p class="text-lg sm:text-xl leading-relaxed">
                         <span class="font-bold">10%</span> доходів від <span class="font-bold">чистого прибутку</span>
                         проєктів належать керуючій компанії проєкту — <span class="font-bold">IFW</span>,
                         оскільки компанія також здійснює <span class="font-bold">власні інвестиції</span> в кожен проєкт,
@@ -732,7 +827,7 @@
                         утримує професійну команду, здійснює контроль та <span class="font-bold">розвиток кожного проєкту.</span>
                     </p>
 
-                    <p class="text-xl md:text-2xl leading-relaxed">
+                    <p class="text-lg sm:text-xl leading-relaxed">
                         <span class="font-bold">Після завершення збору</span> інвестицій буде проведено
                         <span class="font-bold">повний перерахунок</span> кількості інвесторів і сум їхніх інвестицій
                         <span class="font-bold">по всім проєктам</span> для точного розрахунку часток кожного із співвласників
@@ -746,188 +841,45 @@
 
 
         <!-- LIGHTBOX -->
-        <div id="lightbox" class="fixed inset-0 z-[80] hidden">
-            <div class="absolute inset-0 bg-black/80" data-lb-close></div>
+        <div id="lightbox" class="fixed inset-0 z-[100] hidden flex items-center justify-center">
+            <div class="absolute inset-0 bg-black/95" data-lb-close></div>
 
-            <div class="relative h-full w-full flex items-center justify-center p-4 sm:p-10">
+            <div class="relative w-full h-full flex items-center justify-center p-2 sm:p-10">
+
+                <div id="lbCounter" class="absolute left-6 top-6 z-10 bg-white px-4 py-2 rounded-full text-black font-bold text-sm shadow-lg">
+                    1 / 1
+                </div>
+
                 <button
                         type="button"
-                        class="absolute right-4 top-4 sm:right-8 sm:top-8 rounded-2xl bg-white/10 px-4 py-3 text-white/80 hover:text-white hover:bg-white/15"
+                        class="absolute right-6 top-6 z-10 rounded-full bg-white p-4 text-black shadow-lg hover:bg-gray-100 active:scale-95 transition-all"
                         data-lb-close
                         aria-label="Close"
                 >
-                    ✕
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
 
                 <button
                         type="button"
-                        class="absolute left-2 sm:left-6 rounded-2xl bg-white/10 px-4 py-3 text-white/80 hover:text-white hover:bg-white/15"
+                        class="absolute left-4 z-10 rounded-full bg-white p-4 text-black shadow-lg hover:bg-gray-100 active:scale-95 transition-all sm:left-10"
                         data-lb-prev
                         aria-label="Previous"
                 >
-                    ←
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"/></svg>
                 </button>
 
-                <img id="lbImg" src="" alt="Lightbox Image" class="max-h-[86vh] max-w-[92vw] rounded-[28px] object-contain bg-black/20" />
+                <img id="lbImg" src="" alt="Lightbox Image" class="max-h-[80vh] max-w-[95vw] rounded-[24px] object-contain shadow-2xl transition-all duration-300" />
 
                 <button
                         type="button"
-                        class="absolute right-2 sm:right-6 rounded-2xl bg-white/10 px-4 py-3 text-white/80 hover:text-white hover:bg-white/15"
+                        class="absolute right-4 z-10 rounded-full bg-white p-4 text-black shadow-lg hover:bg-gray-100 active:scale-95 transition-all sm:right-10"
                         data-lb-next
                         aria-label="Next"
                 >
-                    →
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
                 </button>
             </div>
         </div>
-
-
-        <!-- 3) CSS ANIMATION (ONE TIME) -->
-        <style>
-            /* скорость автопрокрутки: меняй duration */
-            .vtrack {
-                animation: vscroll 28s linear infinite;
-            }
-            /* пауза при наведении/тапе */
-            [data-vscroll]:hover .vtrack,
-            [data-vscroll]:focus-within .vtrack {
-                animation-play-state: paused;
-            }
-            @keyframes vscroll {
-                from { transform: translateY(0); }
-                to   { transform: translateY(-50%); } /* because we will duplicate items via JS */
-            }
-        </style>
-
-        <!-- 4) JS: infinite vertical scroll + fullscreen gallery with arrows -->
-        <script>
-            (function () {
-                // 1. Инициализация бесконечного скролла для всех каруселей
-                document.querySelectorAll("[data-vscroll]").forEach((wrap) => {
-                    const track = wrap.querySelector("[data-vtrack]");
-                    if (!track || track.dataset.inited === "1") return;
-                    track.dataset.inited = "1";
-                    const items = Array.from(track.children);
-                    items.forEach((node) => track.appendChild(node.cloneNode(true)));
-                });
-
-                // 2. Элементы Лайтбокса
-                const lb = document.getElementById("lightbox");
-                const lbImg = document.getElementById("lbImg");
-                if (!lb || !lbImg) return; // Защита от ошибок, если HTML не найден
-
-                const btnPrev = lb.querySelector("[data-lb-prev]");
-                const btnNext = lb.querySelector("[data-lb-next]");
-                const btnCloses = lb.querySelectorAll("[data-lb-close]");
-
-                let currentList = [];
-                let currentIndex = 0;
-
-                function openLightbox(list, index) {
-                    currentList = list;
-                    currentIndex = index;
-                    lbImg.src = currentList[currentIndex];
-                    lb.classList.remove("hidden");
-                    document.body.style.overflow = 'hidden';
-                }
-
-                function closeLightbox() {
-                    lb.classList.add("hidden");
-                    lbImg.src = "";
-                    document.body.style.overflow = '';
-                }
-
-                function showPrev() {
-                    if (!currentList.length) return;
-                    currentIndex = (currentIndex - 1 + currentList.length) % currentList.length;
-                    lbImg.src = currentList[currentIndex];
-                }
-
-                function showNext() {
-                    if (!currentList.length) return;
-                    currentIndex = (currentIndex + 1) % currentList.length;
-                    lbImg.src = currentList[currentIndex];
-                }
-
-                // Слушатели событий
-                btnPrev?.addEventListener("click", (e) => { e.stopPropagation(); showPrev(); });
-                btnNext?.addEventListener("click", (e) => { e.stopPropagation(); showNext(); });
-                btnCloses.forEach(btn => btn.addEventListener("click", closeLightbox));
-                lbImg.addEventListener("click", (e) => { e.stopPropagation(); showNext(); });
-
-                document.addEventListener("keydown", (e) => {
-                    if (lb.classList.contains("hidden")) return;
-                    if (e.key === "Escape") closeLightbox();
-                    if (e.key === "ArrowLeft") showPrev();
-                    if (e.key === "ArrowRight") showNext();
-                });
-
-                // 3. ГЛАВНОЕ: Обработка клика по картинке в ЛЮБОЙ карусели
-                document.addEventListener("click", (e) => {
-                    const item = e.target.closest("[data-gallery-item]");
-                    if (!item) return;
-
-                    // Находим контейнер именно той карусели, в которой кликнули
-                    const container = item.closest("[data-vscroll]");
-                    if (!container) return;
-
-                    // Собираем все ссылки на картинки только из этой карусели
-                    const track = container.querySelector("[data-vtrack]");
-                    const allPhotos = Array.from(track.querySelectorAll("[data-gallery-item]"))
-                        .map(el => el.getAttribute("data-src"));
-
-                    // Так как мы дублировали элементы для бесконечного скролла,
-                    // берем только первую половину списка как уникальные фото
-                    const uniqueCount = Math.floor(allPhotos.length / 2);
-                    const uniqueList = allPhotos.slice(0, uniqueCount);
-
-                    // Определяем индекс (если кликнули на дубль, находим его оригинал в первой половине)
-                    const currentSrc = item.getAttribute("data-src");
-                    const index = uniqueList.indexOf(currentSrc);
-
-                    openLightbox(uniqueList, index !== -1 ? index : 0);
-                });
-            })();
-
-            (function () {
-                const cards = document.querySelectorAll(".project-card");
-
-                function closeAll(exceptEl) {
-                    cards.forEach((card) => {
-                        if (card === exceptEl) return;
-                        card.querySelector(".project-compact")?.classList.remove("hidden");
-                        card.querySelector(".project-open")?.classList.add("hidden");
-                        card.classList.remove("is-open");
-                    });
-                }
-
-                cards.forEach((card) => {
-                    const toggles = card.querySelectorAll("[data-toggle]");
-                    toggles.forEach((btn) => {
-                        btn.addEventListener("click", () => {
-                            const isOpen = card.classList.contains("is-open");
-                            if (isOpen) {
-                                // close
-                                card.querySelector(".project-compact")?.classList.remove("hidden");
-                                card.querySelector(".project-open")?.classList.add("hidden");
-                                card.classList.remove("is-open");
-                                return;
-                            }
-
-                            // open (close others first)
-                            closeAll(card);
-
-                            card.querySelector(".project-compact")?.classList.add("hidden");
-                            card.querySelector(".project-open")?.classList.remove("hidden");
-                            card.classList.add("is-open");
-
-                            // optional: scroll to opened card top like UX in your example
-                            card.scrollIntoView({ behavior: "smooth", block: "start" });
-                        });
-                    });
-                });
-            })();
-        </script>
 
     </section>
 
@@ -935,10 +887,10 @@
         <div>
 
             <div class="mb-12">
-                <h2 class="text-4xl md:text-6xl font-bold mb-2">
+                <h2 class="text-3xl md:text-5xl font-bold mb-2">
                     Загальна інформація
                 </h2>
-                <h3 class="text-4xl md:text-6xl font-bold text-[#6366F1]">
+                <h3 class="text-3xl md:text-5xl font-bold text-[#6366F1]">
                     Фінансових Зборів
                 </h3>
             </div>
@@ -958,31 +910,32 @@
                 <img src="img/finances-mob.png" alt="Графік фінансових зборів 2022-2026" class="w-full h-auto max-w-full">
             </div>
 
-            <div class="max-w-md justify-end py-4">
-                <div class="mb-8 flex justify-center">
-                    <img src="img/icon1.png" alt="International aid icons" class="h-24 w-auto">
+            <div class="max-w-md mx-auto lg:ml-auto lg:mr-0 py-4 text-left">
+
+                <div class="mb-8 flex justify-end">
+                    <img src="img/icon1.png" alt="International aid icons" class="h-12 md:h-24 w-auto">
                 </div>
 
                 <div class="space-y-4">
-                    <p class="text-white text-xl md:text-2xl leading-snug font-light">
+                    <p class="text-gray-400 text-lg md:text-xl font-light">
                         Загальна міжнародна допомога <br>
-                        <span class="text-gray-400">(військова, фінансова, гуманітарна)</span> <br>
+                        <span class=" font-normal">(військова, фінансова, гуманітарна)</span> <br>
                         оцінюється приблизно в
-                        <span class="text-[#6366F1] font-bold text-2xl">309+ млрд євро</span>
-                        <span class="text-gray-400 font-normal">(понад</span>
-                        <span class="text-[#6366F1] font-bold text-2xl">360$ млрд</span><span class="text-gray-400">)</span>
+                        <span class="text-[#6366F1] font-bold">309+ млрд євро</span>
+                        <span class=" font-normal">(понад</span>
+                        <span class="text-[#6366F1] font-bold">360$ млрд</span><span class="text-gray-400">)</span>
                     </p>
                 </div>
             </div>
 
-            <div class="space-y-8 max-w-full">
-                <p class="text-lg md:text-5xl text-gray-300 ">
+            <div class="space-y-8 max-w-full mt-8">
+                <p class="text-lg md:text-3xl text-gray-300 ">
                     Українські громадяни та волонтери пожертвували принаймні десятки мільярдів гривень у благодійних фондів та на спецрахунки з
                     <span class="text-[#6366F1] font-bold">2022</span> по <span class="text-[#6366F1] font-bold">2025</span> роки
                     (одна з найбільших оцінок — понад <span class="text-[#6366F1] font-bold">100 – 150 млрд грн</span> через фонди та збори).
                 </p>
 
-                <p class="text-lg md:text-5xl text-gray-400">
+                <p class="text-lg md:text-3xl text-gray-300">
                     Міжнародна державна підтримка (не прямі донати) становить сотні мільярдів доларів/євро.
                 </p>
             </div>
@@ -992,9 +945,13 @@
     <section class="py-16 px-2 sm:px-10 text-white font-sans border-t border-white/10">
         <div class=" mx-auto py-10">
 
-            <h2 class="text-3xl md:text-5xl font-bold text-center mb-16 tracking-tight">
-                Як це <span class="text-[#6366F1]">ПРАЦЮЄ?</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-center tracking-tight uppercase">
+                <span class="text-[#6366F1]">реферальна</span> <span class="text-white">система</span>
             </h2>
+
+            <h3 class="text-xl md:text-2xl font-semibold text-center mb-16 tracking-tight text-gray-100">
+                Як працює?
+            </h3>
 
             <div class="space-y-12">
 
@@ -1063,7 +1020,7 @@
             </div>
 
             <div class="text-center mt-12">
-                <button class="bg-[#6366F1] hover:bg-[#4F46E5] text-white font-bold py-3 px-10 rounded-2xl transition-all">
+                <button class="bg-[#7867F4] hover:bg-[#9688FF] text-white font-bold py-3 px-10 rounded-full transition-all">
                     Стати партнером
                 </button>
             </div>
@@ -1090,16 +1047,16 @@
     <section class="text-white py-16 px-2 sm:px-10">
         <div class="mx-auto">
             <!-- Title -->
-            <h2 class="text-left text-2xl sm:text-8xl font-bold leading-tight mb-8">
+            <h2 class="text-left text-2xl sm:text-6xl font-bold leading-tight mb-8">
                 <span class="text-[#7867F4]">Бонус виплати</span> від залучення
-                <span class="text-[#7867F4]">клієнтів</span> <br class="hidden sm:block">до реального<br class="hidden sm:block">
+                <span class="text-[#7867F4]">клієнтів</span> до реального<br class="hidden sm:block">
                 <span class="text-[#7867F4]">бізнесу:</span>
             </h2>
 
             <!-- Content Container -->
-            <div class="flex flex-col sm:flex-row justify-between items-center space-y-8 sm:space-y-0 sm:space-x-12">
+            <div class="flex flex-col sm:flex-row justify-between items-center text-gray-300 space-y-8 sm:space-y-0 sm:space-x-12">
                 <!-- Left Text -->
-                <div class="sm:w-1/3">
+                <div class="sm:w-1/2">
                     <p class="text-lg sm:text-4xl mb-6">
                         Одноразова виплата від результату залучення інвестицій до проєктів, або можливість
                         <span class="text-[#7867F4]">підвищити статус</span>.
@@ -1147,11 +1104,11 @@
     <section class="text-white py-16 px-2 sm:px-10 font-sans selection:bg-indigo-500/30">
         <div class="mx-auto">
 
-            <h2 class="text-3xl md:text-6xl font-bold text-start mb-12 tracking-tight">
+            <h2 class="text-2xl md:text-5xl font-bold text-start mb-12 tracking-tight">
                 Бонусна <span class="text-[#7867F4]">система</span> з накопиченням <span class="text-[#7867F4]">IFW-балів</span>
             </h2>
 
-            <div class="text-start text-lg sm:text-3xl space-y-6 text-gray-400 text-lg leading-relaxed mb-16">
+            <div class="text-start text-lg sm:text-3xl space-y-6 text-gray-300 leading-relaxed mb-16">
                 <p>
                     У межах нашої <span class="text-[#7867F4] font-semibold">партнерської програми</span> діє бонусна система з накопиченням <span class="text-[#7867F4] font-semibold">IFW-балів.</span>
                     За кожного залученого інвестора, а також за виконання додаткових завдань партнерської програми, Вам
@@ -1193,15 +1150,17 @@
                 </div>
             </div>
 
-            <div class="bg-[#d9d9d9] text-[#1e1e1e] p-10 md:p-14 rounded-[40px] text-left">
-                <p class="text-lg md:text-4xl font-medium mb-8 leading-snug ">
-                    Чим більше ваша <span class="font-bold">активність</span>, тим більше <span class="font-bold">IFW-балів</span> Вам нараховується.
-                </p>
-                <p class="text-lg md:text-4xl font-medium mb-10 leading-snug">
-                    Деталі програми та персональні можливості ви можете <span class="font-bold">дізнатися</span> у наших менеджерів <span class="font-bold">за кнопкою нижче.</span>
-                </p>
+            <div class="bg-[#d9d9d9] text-[#1e1e1e] p-10 md:p-14 rounded-[40px] flex flex-col items-center">
+                <div class="w-full text-left">
+                    <p class="text-lg md:text-3xl font-medium mb-8 leading-snug">
+                        Чим більше ваша <span class="font-bold">активність</span>, тим більше <span class="font-bold">IFW-балів</span> Вам нараховується.
+                    </p>
+                    <p class="text-lg md:text-3xl font-medium mb-10 leading-snug">
+                        Деталі програми та персональні можливості ви можете <span class="font-bold">дізнатися</span> у наших менеджерів <span class="font-bold">за кнопкою нижче.</span>
+                    </p>
+                </div>
 
-                <button class="bg-[#8183ff] hover:bg-[#6c6ef5] justify-center text-white px-10 py-4 rounded-full text-lg font-semibold transition-all shadow-lg active:scale-95">
+                <button class="bg-[#7867F4] hover:bg-[#9688FF] text-white px-10 py-4 rounded-full text-lg font-semibold transition-all shadow-lg active:scale-95">
                     Зв'язатися з менеджером
                 </button>
             </div>
@@ -1212,12 +1171,12 @@
     <section class="py-24 px-2 sm:px-10 text-center font-sans">
         <div class="max-w-6xl mx-auto space-y-16">
 
-            <h2 class="text-white text-xl md:text-5xl font-bold leading-tight tracking-tight">
-                А що обереш ти: <span class="text-[#7d7efb] text-[32px] sm:text-[72px]">діяти,</span> чи чекати як <br class="hidden md:block"> завжди кращого моменту?
+            <h2 class="text-xl md:text-4xl font-bold leading-tight tracking-tight text-gray-300">
+                А що обереш ти: <span class="text-[#7d7efb] text-[32px] sm:text-[52px]">діяти,</span> чи чекати як <br class="hidden md:block"> завжди кращого моменту?
             </h2>
 
-            <h3 class="text-white text-xl md:text-5xl  font-bold leading-none tracking-tighter">
-                <span class="text-[#7d7efb] text-[32px] sm:text-[72px]">Приєднуйся</span> до команди <span class="text-[#7d7efb] text-[32px] sm:text-[72px]">IFW</span> та <br class="hidden md:block">
+            <h3 class="text-gray-300 text-xl md:text-4xl  font-bold leading-none tracking-tighter">
+                <span class="text-[#7d7efb] text-[32px] sm:text-[52px]">Приєднуйся</span> до команди <span class="text-[#7d7efb] text-[32px] sm:text-[52px]">IFW</span> та <br class="hidden md:block">
                 долучайся до великого розвитку нашої <br class="hidden md:block"> країни!
             </h3>
 
@@ -1225,73 +1184,85 @@
     </section>
 
     <footer class="pt-16 px-2 sm:px-10 relative">
-        <div class="absolute top-4 left-10 md:left-32 z-30">
+        <div class="absolute top-8 left-14 sm:left-10 md:left-32 z-0">
             <div class="bg-brand px-8 py-3 shadow-lg">
-                <div class="text-[10px] md:text-xs font-bold tracking-[0.2em] text-[#29292B] whitespace-nowrap">
+                <div class="text-[8px] md:text-xs font-bold tracking-[0.2em] text-[#29292B] whitespace-nowrap">
                     INVEST FREEDOM WIN
                 </div>
             </div>
         </div>
 
-        <div class="mx-auto bg-[#d9d9d9] rounded-t-[48px] z-10 relative overflow-hidden p-8 md:p-16 min-h-[600px] flex flex-col justify-between"
+        <div class="mx-auto bg-[#d9d9d9] rounded-t-[48px] z-20 relative overflow-hidden p-8 md:p-16 min-h-[600px] flex flex-col justify-between"
              style="background-image: url('img/logo-back.png'); background-size: cover; background-position: center;">
 
-
-            <div class="relative z-10 border-b border-black/10 pb-8 mb-12">
-                <h2 class="text-2xl md:text-6xl font-black text-[#1a1a1a] text-center tracking-tight">Контакти</h2>
+            <div class="relative z-10 border-b-2 border-black pb-8 mb-12">
+                <h2 class="text-4xl md:text-4xl font-black text-[#1a1a1a] text-left md:text-center tracking-tight">Контакти</h2>
             </div>
 
             <div class="relative z-10 grid md:grid-cols-2 gap-12 items-start">
                 <div class="space-y-6">
-                    <h3 class="text-3xl md:text-7xl font-black leading-[0.9] text-[#1a1a1a]">
+                    <h3 class="text-4xl md:text-5xl font-black leading-[0.9] text-[#1a1a1a]">
                         Долучайся<br>до спільноти
                     </h3>
                     <p class="text-lg text-[#1a1a1a]/70 max-w-none sm:max-w-sm font-medium">
                         Шукай наші новини, нові проекти, статистику у наших соц мережах та месенджерах
                     </p>
+
+                    <div class="flex md:hidden flex-col gap-4 pt-4">
+                        <div class="flex gap-6">
+                            <a href="https://instagram.com/investfreedomwin" class="w-10 h-10 flex items-center justify-center"><img src="img/instagram.png" alt="instagram" class="w-full"></a>
+                            <a href="https://www.tiktok.com/@investfreedomwin" class="w-10 h-10 flex items-center justify-center"><img src="img/tiktok.png" alt="whatsapp" class="w-full"></a> <a href="https://t.me/investfreedomwin" class="w-10 h-10 flex items-center justify-center"><img src="img/telegram.png" alt="telegram" class="w-full"></a>
+                        </div>
+                        <p class="text-xl font-normal tracking-tight">investfreedomwin@gmail.com</p>
+                        <div class="h-[2px] bg-black w-full my-4"></div> </div>
                 </div>
 
-                <div class="flex flex-col md:flex-row gap-8 border-l-0 md:border-l border-black/10 pl-0 md:pl-12">
+                <div class="flex flex-col md:flex-row gap-8 md:border-l border-black pl-0 md:pl-12">
                     <div class="flex-1 w-full">
                         <div class="mb-8 flex justify-start items-start">
-                            <img src="img/logo.png" alt="Logo" class="h-12 w-auto object-contain">
+                            <img src="img/logo.png" alt="Logo" class="h-20 w-auto object-contain">
                         </div>
 
-                        <p class="text-lg font-normal text-[#1a1a1a] mb-4">Офіс – відділ продажів</p>
+                        <p class="text-xl font-normal text-[#1a1a1a] mb-6">Офіс – відділ продажів</p>
 
-                        <div class="rounded-[32px] overflow-hidden shadow-2xl border-4 border-white/30 w-full aspect-video md:aspect-square lg:max-w-[400px]">
+                        <div class="rounded-[32px] overflow-hidden border-2 border-white/50 w-full aspect-video lg:max-w-[400px]">
                             <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2541.7765103405784!2d30.51733331573748!3d50.4266109794717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cf395772393d%3A0x70577742d4a52041!2z0LLRg9C70LjRhtGPINCS0LXQu9C40LrQsCDQktCw0YHQuNC70YzQutGW0LLRgdGM0LrQsCwgMTAwLCDQmtC40ZfQsiwgMDIwMDA!5e0!3m2!1suk!2sua!4v1700000000000!5m2!1suk!2sua"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2541.839446401666!2d30.51864117688229!3d50.42450128854359!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cf3e4ee3517b%3A0x6335165d40a02c9d!2z0LLRg9C70LjRhtGPINCS0LXQu9C40LrQsCDQktCw0YHQuNC70YzQutGW0LLRgdGM0LrQsCwgMTAwLCDQmtC40ZfQsiwgMDIwMDA!5e0!3m2!1suk!2sua!4v1700000000000"
                                     width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                             </iframe>
+                        </div>
+
+                        <div class="flex items-end gap-3 mt-8 text-xl font-normal md:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <path d="M15.8263 2.12724C15.9405 2.10604 16.4307 2.13224 16.5636 2.14048C17.9715 2.22415 19.3363 2.65857 20.5336 3.40423C22.4614 4.59961 23.8382 6.50883 24.3639 8.71544C24.8044 10.5872 24.601 12.5528 23.7865 14.2947C23.4902 14.9207 23.1396 15.4668 22.7752 16.0527L21.6114 17.9223L18.4994 22.9259C20.2226 23.1513 22.3776 23.7171 23.6988 24.9255C24.1958 25.38 24.5674 25.9774 24.5899 26.6646C24.6104 27.2896 24.2898 27.9155 23.8531 28.3488C22.083 30.1047 18.7747 30.6091 16.4257 30.6634C13.8792 30.7016 10.9561 30.3389 8.79089 28.873C7.59339 28.0622 6.93005 26.6173 7.92162 25.3654C9.14882 23.816 11.5233 23.2235 13.3817 22.9441C13.2673 22.7311 13.0989 22.4679 12.9709 22.2534L12.1472 20.8752L9.70825 16.7948C9.1416 15.8479 8.42286 14.7441 8.03105 13.7273C7.68417 12.8228 7.4946 11.8657 7.47053 10.8972C7.41223 8.63509 8.25479 6.44238 9.81294 4.80135C11.3781 3.14027 13.5445 2.17689 15.8263 2.12724ZM15.9043 24.9612L16.0466 24.731L20.1997 18.0556L21.5699 15.8527C22.1642 14.897 22.7126 14.1045 23.0599 13.0233C23.4668 11.7574 23.5216 10.4047 23.2185 9.10995C22.7696 7.19391 21.5759 5.53561 19.9014 4.50168C18.8876 3.87267 17.735 3.50168 16.5445 3.42116C16.3808 3.40914 15.968 3.38762 15.8172 3.4073C13.8457 3.46142 11.9786 4.30552 10.6356 5.74989C9.30072 7.17539 8.58722 9.07308 8.6523 11.025C8.68185 11.919 8.8751 12.8 9.22248 13.6242C9.47321 14.2234 9.85122 14.831 10.1861 15.3918L11.3724 17.376L14.3319 22.3278C14.8528 23.1993 15.395 24.0848 15.9043 24.9612ZM13.983 23.933C12.4432 24.1059 9.94358 24.6792 8.94102 25.9114C7.59018 27.5717 10.8061 28.8224 11.9372 29.1122C14.8965 29.918 19.2818 29.8516 22.057 28.3351C22.558 28.0614 23.2207 27.5541 23.3762 26.9733C23.4539 26.6837 23.3904 26.3749 23.2339 26.1233C22.6126 25.125 20.9495 24.5362 19.8613 24.2638C19.211 24.1027 18.5506 23.9854 17.8847 23.9126L16.7787 25.691C16.6097 25.9631 16.425 26.2816 16.233 26.5383C16.1816 26.6069 16.0857 26.6576 16.0012 26.6765C15.8789 26.7045 15.7503 26.6823 15.6445 26.6147C15.5943 26.5825 15.5404 26.526 15.5087 26.4753C14.9842 25.639 14.5022 24.7724 13.983 23.933Z" fill="#29292B"/>
+                                <path d="M15.9697 7.57068C17.6909 7.5444 19.1072 8.91973 19.1313 10.6412C19.1554 12.3626 17.7782 13.777 16.0567 13.7989C14.3384 13.8208 12.9271 12.4466 12.903 10.7283C12.879 9.01 14.2513 7.59693 15.9697 7.57068ZM16.181 12.7638C17.3259 12.6736 18.1823 11.6749 18.097 10.5297C18.0116 9.38452 17.0166 8.52378 15.871 8.60424C14.7186 8.68517 13.8515 9.68756 13.9373 10.8397C14.0232 11.9918 15.0293 12.8546 16.181 12.7638Z" fill="#29292B"/>
+                            </svg> <span>вулиця Велика Васильківська, 100</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="relative z-10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-8 border-t border-black/10">
-                <div class="flex flex-col gap-4 items-center md:items-start">
+            <div class="relative z-10 mt-4 pt-4 hidden md:flex flex-row justify-between items-end gap-8">
+                <div class="flex flex-col gap-4 items-start">
                     <div class="flex gap-6">
-                        <a href="https://instagram.com/investfreedomwin" class="w-10 h-10  rounded-full flex items-center justify-center hover:bg-brand transition-all"><img
-                                src="img/instagram.png" alt="instagram"></a>
-                        <a href="https://www.tiktok.com/@investfreedomwin" class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-brand transition-all"><img
-                                src="img/tiktok.png" alt="tik-tok"></a>
-                        <a href="https://t.me/investfreedomwin" class="w-10 h-10  rounded-full flex items-center justify-center hover:bg-brand transition-all"><img
-                                src="img/telegram.png" alt="telegram"></a>
+                        <a href="https://instagram.com/investfreedomwin" class="w-10 h-10 hover:scale-110 transition-all"><img src="img/instagram.png" alt="instagram"></a>
+                        <a href="https://www.tiktok.com/@investfreedomwin" class="w-10 h-10 hover:scale-110 transition-all"><img src="img/tiktok.png" alt="tiktok"></a>
+                        <a href="https://t.me/investfreedomwin" class="w-10 h-10 hover:scale-110 transition-all"><img src="img/telegram.png" alt="telegram"></a>
                     </div>
-                    <p class="text-sm sm:text-xl font-black tracking-tight">investfreedomwin@gmail.com</p>
+                    <p class="text-xl font-normal tracking-tight">investfreedomwin@gmail.com</p>
                 </div>
 
-                <div class="flex items-center gap-3 text-sm sm:text-lg font-bold
-                px-6 py-3 rounded-full">
-                    <svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                <div class="flex items-center gap-3 text-lg font-normal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <path d="M15.8264 2.12724C15.9406 2.10604 16.4308 2.13224 16.5637 2.14048C17.9716 2.22415 19.3364 2.65857 20.5337 3.40423C22.4615 4.59961 23.8383 6.50883 24.364 8.71544C24.8045 10.5872 24.6011 12.5528 23.7866 14.2947C23.4903 14.9207 23.1397 15.4668 22.7753 16.0527L21.6115 17.9223L18.4995 22.9259C20.2227 23.1513 22.3777 23.7171 23.6989 24.9255C24.1959 25.38 24.5675 25.9774 24.59 26.6646C24.6105 27.2896 24.2899 27.9155 23.8532 28.3488C22.0831 30.1047 18.7748 30.6091 16.4258 30.6634C13.8793 30.7016 10.9562 30.3389 8.791 28.873C7.59349 28.0622 6.93016 26.6173 7.92172 25.3654C9.14893 23.816 11.5234 23.2235 13.3818 22.9441C13.2674 22.7311 13.099 22.4679 12.971 22.2534L12.1473 20.8752L9.70835 16.7948C9.14171 15.8479 8.42297 14.7441 8.03116 13.7273C7.68428 12.8228 7.49471 11.8657 7.47064 10.8972C7.41234 8.63509 8.2549 6.44238 9.81305 4.80135C11.3782 3.14027 13.5446 2.17689 15.8264 2.12724ZM15.9044 24.9612L16.0467 24.731L20.1998 18.0556L21.57 15.8527C22.1643 14.897 22.7127 14.1045 23.06 13.0233C23.4669 11.7574 23.5217 10.4047 23.2186 9.10995C22.7697 7.19391 21.576 5.53561 19.9015 4.50168C18.8877 3.87267 17.7351 3.50168 16.5446 3.42116C16.3809 3.40914 15.9681 3.38762 15.8174 3.4073C13.8458 3.46142 11.9787 4.30552 10.6357 5.74989C9.30083 7.17539 8.58733 9.07308 8.65241 11.025C8.68195 11.919 8.87521 12.8 9.22259 13.6242C9.47331 14.2234 9.85133 14.831 10.1862 15.3918L11.3725 17.376L14.332 22.3278C14.8529 23.1993 15.3951 24.0848 15.9044 24.9612ZM13.9831 23.933C12.4433 24.1059 9.94368 24.6792 8.94113 25.9114C7.59028 27.5717 10.8062 28.8224 11.9373 29.1122C14.8966 29.918 19.2819 29.8516 22.0571 28.3351C22.5581 28.0614 23.2208 27.5541 23.3763 26.9733C23.454 26.6837 23.3905 26.3749 23.234 26.1233C22.6127 25.125 20.9496 24.5362 19.8614 24.2638C19.2111 24.1027 18.5507 23.9854 17.8848 23.9126L16.7788 25.691C16.6098 25.9631 16.4251 26.2816 16.2331 26.5383C16.1817 26.6069 16.0858 26.6576 16.0013 26.6765C15.879 26.7045 15.7504 26.6823 15.6446 26.6147C15.5944 26.5825 15.5405 26.526 15.5088 26.4753C14.9843 25.639 14.5024 24.7724 13.9831 23.933Z" fill="#29292B"/>
+                        <path d="M15.9698 7.57068C17.691 7.5444 19.1073 8.91973 19.1314 10.6412C19.1555 12.3626 17.7783 13.777 16.0568 13.7989C14.3385 13.8208 12.9272 12.4466 12.9031 10.7283C12.8791 9.01 14.2514 7.59693 15.9698 7.57068ZM16.1811 12.7638C17.326 12.6736 18.1824 11.6749 18.0971 10.5297C18.0118 9.38452 17.0167 8.52378 15.8711 8.60424C14.7187 8.68517 13.8516 9.68756 13.9374 10.8397C14.0233 11.9918 15.0294 12.8546 16.1811 12.7638Z" fill="#29292B"/>
+                    </svg>
                     вулиця Велика Васильківська, 100
                 </div>
             </div>
 
         </div>
     </footer>
-
 
 </main>
 
@@ -1300,107 +1271,101 @@
         // Данные для каждого статуса (полный текст со скриншотов)
         const statusData = [
             {
-                title: 'Status <span class="text-[#60A5FA]">"Silver"</span> від 500.000',
+                title: 'Status <span class="text-[#6366F1]">"Silver"</span> від 500.000',
                 list: [
-                    'Персоналізований цифровий сертифікат інвестора',
-                    'Іменний документ, що підтверджує ваш статус та участь у проекті IFW.',
-                    'Унікальний інвесторський номер з доступом до реферальної системи',
-                    'На ваш вибір: — 5% фіксованої винагороди від першого внеску інвестора, залученого за вашим промокодом або — 2,5% від усіх інвестицій залученого клієнта за вашим промокодом та подальших від Вашої лінії інвестицій «Після залучення Вами інвестора всі подальші інвестиції як цього інвестора, так і осіб, залучених ним, фіксуються з Вашим бонусом»'
-                ]
+                    '1. Персоналізований цифровий сертифікат інвестора <br> Іменний документ, що підтверджує ваш статус та участь у проекті <span class="text-[#6366F1]">IFW</span>.',
+                    '2. Унікальний інвесторський номер з доступом до реферальної системи <br> На ваш вибір: <br> — 5% фіксованої винагороди від першого внеску інвестора, залученого за вашим промокодом або — 2,5% від усіх інвестицій залученого клієнта за вашим промокодом та подальших від вашої лінії інвестицій «Після залучення Вами інвестора всі подальші інвестиції як цього інвестора, так і осіб, залучених ним, фіксуються з Вашим бонусом»'
+                ],
+                footer: '<span class="text-[#6366F1]">Розподіл часток</span> відбувається після повного закриття інвестиційного збору та згідно суми вашої інвестиції.'
             },
             {
-                title: 'Status <span class="text-[#4ADE80]">"Green"</span> від 10.000',
+                title: 'Status <span class="text-[#6366F1]">"Green"</span> від 10.000',
                 list: [
-                    'Персоналізований цифровий та фізичний сертифікат інвестора',
-                    'Іменний документ, що підтверджує ваш статус та участь у проектах IFW.',
-                    'Унікальний інвесторський номер з доступом до реферальної системи',
-                    'На ваш вибір: — 6% фіксованої винагороди від першого внеску інвестора, залученого за вашим промокодом або — 3% від усіх інвестицій залученого клієнта за вашим промокодом та подальших від Вашої лінії інвестицій «Після залучення Вами інвестора всі подальші інвестиції як цього інвестора, так і осіб, залучених ним, фіксуються з Вашим бонусом».',
-                    'Доступ до бонусної системи з накопиченням IFW-балів.',
-                    'За кожного залученого інвестора вам нараховуються IFW-бали від суми залучених інвестицій.',
-                    'Накопичені бали можна обміняти на реальні кошти або підвищення статусу.',
-                    'Еквівалент балів до обсягу інвестицій ви можете уточнити у нашого менеджера.',
-                    'Чим більша сума залучених інвестицій — тим більше балів ви отримуєте, а відповідно зростає і ваш дохід та можливості перейти на новий рівень.'
-                ]
+                    '1. Персоналізований цифровий та фізичний сертифікат інвестора <br> Іменний документ, що підтверджує ваш статус та участь у проектах <span class="text-[#6366F1]">IFW</span>.',
+                    '2. Унікальний інвесторський номер з доступом до реферальної системи <br> На ваш вибір: <br> — 6% фіксованої винагороди від першого внеску інвестора, залученого за вашим промокодом або — 3% від усіх інвестицій залученого клієнта за вашим промокодом та подальших від Вашої лінії інвестицій «Після залучення Вами інвестора всі подальші інвестиції як цього інвестора, так і осіб, залучених ним, фіксуються з Вашим бонусом» .',
+                    '• Доступ до бонусної системи з накопиченням <span class="text-[#6366F1]">IFW-балів</span>.',
+                    '• За кожного залученого інвестора вам нараховуються <span class="text-[#6366F1]">IFW-бали</span> від суми залучених інвестицій.',
+                    '• Накопичені бали можна обміняти на реальні кошти або підвищення статусу.',
+                    '• Еквівалент балів до обсягу інвестицій ви можете уточнити у нашого менеджера.',
+                    '• Чим більша сума залучених інвестицій — тим більше балів ви отримуєте, а відповідно зростає і ваш дохід та можливості перейти на новий рівень.'
+                ],
+                footer: '<span class="text-[#6366F1]">Розподіл часток</span> відбувається після повного закриття інвестиційного збору та згідно суми вашої інвестиції.'
             },
             {
                 title: 'Status <span class="text-[#6366F1]">"Purple"</span> від 30.000',
                 list: [
-                    'Персоналізований цифровий та фізичний сертифікат інвестора',
-                    'Іменний документ, що підтверджує ваш статус та участь у проектах IFW.',
-                    'Унікальний інвесторський номер з доступом до реферальної системи',
-                    'На ваш вибір: — 7% фіксованої винагороди від першого внеску інвестора, залученого за вашим промокодом або — 4% від усіх інвестицій залученого клієнта за вашим промокодом та подальших від Вашої лінії інвестицій «Після залучення Вами інвестора всі подальші інвестиції як цього інвестора, так і осіб, залучених ним, фіксуються з Вашим бонусом».',
-                    'Доступ до бонусної системи з накопиченням IFW-балів за кожного залученого інвестора вам нараховуються IFW-бали від суми залучених інвестицій.',
-                    'Накопичені бали можна обміняти на реальні кошти.',
-                    'Еквівалент балів до обсягу інвестицій ви можете уточнити у нашого менеджера.',
-                    'Чим більша сума залучених інвестицій — тим більше балів ви отримуєте, а відповідно зростає і ваш дохід.',
-                    'Унікальний набір інвестора Purple особиста знижка в закладах харчування проекту відвідування деяких заходів IFW.'
-                ]
+                    '1. Персоналізований цифровий та фізичний сертифікат інвестора <br> Іменний документ, що підтверджує ваш статус та участь у проектах <span class="text-[#6366F1]">IFW</span>.',
+                    '2. Унікальний інвесторський номер з доступом до реферальної системи <br> На ваш вибір: <br> — 7% фіксованої винагороди від першого внеску інвестора, залученого за вашим промокодом або — 4% від усіх інвестицій залученого клієнта за вашим промокодом та подальших від Вашої лінії інвестицій «Після залучення Вами інвестора всі подальші інвестиції як цього інвестора, так і осіб, залучених ним, фіксуються з Вашим бонусом» .',
+                    '• Доступ до бонусної системи з накопиченням <span class="text-[#6366F1]">IFW-балів</span> за кожного залученого інвестора вам нараховуються <span class="text-[#6366F1]">IFW-бали</span> від суми залучених інвестицій.',
+                    '• Накопичені бали можна обміняти на реальні кошти.',
+                    '• Еквівалент балів до обсягу інвестицій ви можете уточнити у нашого менеджера.',
+                    '• Чим більша сума залучених інвестицій — тим більше балів ви отримуєте, а відповідно зростає і ваш дохід.',
+                    '• Унікальний набір інвестора <span class="text-[#6366F1]">Purple</span> особиста знижка в закладах харчування проекту відвідування деяких заходів <span class="text-[#6366F1]">IFW</span>.'
+                ],
+                footer: '<span class="text-[#6366F1]">Розподіл часток</span> відбувається після повного закриття інвестиційного збору та згідно суми вашої інвестиції.'
             },
             {
-                title: 'Status <span class="text-[#D4AF37]">"Gold"</span> від 50.000',
+                title: 'Status <span class="text-[#6366F1]">"Gold"</span> від 50.000',
                 list: [
-                    'Персоналізований цифровий та фізичний сертифікат інвестора',
-                    'Іменний документ, що підтверджує ваш статус та участь у проектах IFW.',
-                    'Унікальний інвесторський номер з доступом до реферальної системи',
-                    'На ваш вибір: — 8% фіксованої винагороди від першого внеску інвестора, залученого за вашим промокодом або — 5% від усіх інвестицій залученого клієнта за вашим промокодом та подальших від Вашої лінії інвестицій «Після залучення Вами інвестора всі подальші інвестиції як цього інвестора, так і осіб, залучених ним, фіксуються з Вашим бонусом».',
-                    'Доступ до бонусної системи з накопиченням IFW-балів за кожного залученого інвестора вам нараховуються IFW-бали від суми залучених інвестицій.',
-                    'Накопичені бали можна обміняти на реальні кошти.',
-                    'Еквівалент балів до обсягу інвестицій ви можете уточнити у нашого менеджера.',
-                    'Чим більша сума залучених інвестицій — тим більше балів ви отримуєте, а відповідно зростає і ваш дохід.',
-                    'Унікальний набір інвестора Gold',
-                    'Особиста знижка в закладах харчування проекту',
-                    'Закритий чат інвесторів з актуальною інформацією та етапами розвитку проектів',
-                    'Пріоритет на відвідування закритих презентацій, зустрічей, дегустацій клубу.'
-                ]
+                    '1. Персоналізований цифровий та фізичний сертифікат інвестора <br> Іменний документ, що підтверджує ваш статус та участь у проектах <span class="text-[#6366F1]">IFW</span>.',
+                    '2. Унікальний інвесторський номер з доступом до реферальної системи <br> На ваш вибір: <br> — 8% фіксованої винагороди від першого внеску інвестора, залученого за вашим промокодом або — 5% від усіх інвестицій залученого клієнта за вашим промокодом та подальших від Вашої лінії інвестицій «Після залучення Вами інвестора всі подальші інвестиції як цього інвестора, так і осіб, залучених ним, фіксуються з Вашим бонусом» .',
+                    '• Доступ до бонусної системи з накопиченням <span class="text-[#6366F1]">IFW-балів</span> за кожного залученого інвестора вам нараховуються <span class="text-[#6366F1]">IFW-бали</span> від суми залучених інвестицій.',
+                    '• Накопичені бали можна обміняти на реальні кошти.',
+                    '• Еквівалент балів до обсягу інвестицій ви можете уточнити у нашого менеджера.',
+                    '• Чим більша сума залучених інвестицій — тим більше балів ви отримуєте, а відповідно зростає і ваш дохід.',
+                    '• Унікальний набір інвестора <span class="text-[#6366F1]">Gold</span>',
+                    '• Особиста знижка в закладах харчування проекту',
+                    '• Закритий чат інвесторів з актуальною інформацією та етапами розвитку проектів',
+                    '• Пріоритет на відвідування закритих презентацій, зустрічей, дегустацій клубу.'
+                ],
+                footer: '<span class="text-[#6366F1]">Розподіл часток</span> відбувається після повного закриття інвестиційного збору та згідно суми вашої інвестиції.'
             },
             {
-                title: 'Status <span class="text-[#94A3B8]">"Platinum"</span> від 100.000',
+                title: 'Status <span class="text-[#6366F1]">"Platinum"</span> від 100.000',
                 list: [
-                    'Персоналізований цифровий та фізичний сертифікат інвестора',
-                    'Іменний документ, що підтверджує ваш статус та участь у проектах IFW.',
-                    'Унікальний інвесторський номер з доступом до реферальної системи',
-                    'На ваш вибір: — 9% фіксованої винагороди від першого внеску інвестора, залученого за вашим промокодом або — 6% від усіх інвестицій залученого клієнта за вашим промокодом та подальших від Вашої лінії інвестицій «Після залучення Вами інвестора всі подальші інвестиції як цього інвестора, так і осіб, залучених ним, фіксуються з Вашим бонусом» .',
-                    'Доступ до бонусної системи з накопиченням IFW-балів за кожного залученого інвестора вам нараховуються IFW-бали від суми залучених інвестицій.',
-                    'Накопичені бали можна обміняти на реальні кошти.',
-                    'Еквівалент балів до обсягу інвестицій ви можете уточнити у нашого менеджера.',
-                    'Чим більша сума залучених інвестицій — тим більше балів ви отримуєте, а відповідно зростає і ваш дохід.',
-                    'Унікальний набір інвестора Platinum',
-                    'Особиста знижка в закладах харчування проекту',
-                    'Закритий чат інвесторів з актуальною інформацією та етапами проектів',
-                    'Пріоритет на відвідування закритих презентацій, зустрічей та відкриття закладів, дегустацій.',
-                    'Індивідуальний менеджер.',
-                    'Можливість першим дізнаватись нові проекти та можливості для інвестицій.',
-                    'Кращі умови зі знижками для друзів інвестора Platinum',
-                    'Закритий відпочинок інвесторів від IFW.',
-                    'Можливість купити більше сертифікатів в одні руки "індивідуально обговорюється".'
-                ]
+                    '1. Персоналізований цифровий та фізичний сертифікат інвестора <br> Іменний документ, що підтверджує ваш статус та участь у проектах <span class="text-[#6366F1]">IFW</span>.',
+                    '2. Унікальний інвесторський номер з доступом до реферальної системи <br> На ваш вибір: <br> — 9% фіксованої винагороди від першого внеску інвестора, залученого за вашим промокодом або — 6% від усіх інвестицій залученого клієнта за вашим промокодом та подальших від Вашої лінії інвестицій «Після залучення Вами інвестора всі подальші інвестиції як цього інвестора, так і осіб, залучених ним, фіксуються з Вашим бонусом» .',
+                    '• Доступ до бонусної системи з накопиченням <span class="text-[#6366F1]">IFW-балів</span> за кожного залученого інвестора вам нараховуються <span class="text-[#6366F1]">IFW-бали</span> від суми залучених інвестицій.',
+                    '• Накопичені бали можна обміняти на реальні кошти.',
+                    '• Еквівалент балів до обсягу інвестицій ви можете уточнити у нашого менеджера.',
+                    '• Чим більша сума залучених інвестицій — тим більше балів ви отримуєте, а відповідно зростає і ваш дохід.',
+                    '• Унікальний набір інвестора <span class="text-[#6366F1]">Platinum</span>',
+                    '• Особиста знижка в закладах харчування проекту',
+                    '• Закритий чат інвесторів з актуальною інформацією та етапами проектів',
+                    '• Пріоритет на відвідування закритих презентацій, зустрічей та відкриття закладів, дегустацій.',
+                    '• Індивідуальний менеджер',
+                    '• Можливість першим дізнаватись нові проекти та можливості для інвестицій',
+                    '• Кращі умови зі знижками для друзів інвестора <span class="text-[#6366F1]">Platinum</span>',
+                    '• Закритий відпочинок інвесторів від <span class="text-[#6366F1]">IFW</span>',
+                    '• Можливість купити більше сертифікатів в одні руки "індивідуально обговорюється".'
+                ],
+                footer: '<span class="text-[#6366F1]">Розподіл часток</span> відбувається після повного закриття інвестиційного збору та згідно суми вашої інвестиції.'
             },
             {
-                title: 'Status <span class="text-white">"Black"</span> від 500.000',
+                title: 'Status <span class="text-[#6366F1]">"Black"</span> від 500.000',
                 list: [
-                    'Персоналізований цифровий та фізичний сертифікат інвестора',
-                    'Іменний документ, що підтверджує ваш статус та участь у проектах IFW.',
-                    'Унікальний інвесторський номер з доступом до реферальної системи',
-                    'На ваш вибір: — 10% фіксованої винагороди від першого внеску інвестора, залученого за вашим промокодом або — 7% від усіх інвестицій залученого клієнта за вашим промокодом та подальших від Вашої лінії інвестицій «Після залучення Вами інвестора всі подальші інвестиції як цього інвестора, так і осіб, залучених ним, фіксуються з Вашим бонусом».',
-                    'Доступ до бонусної системи з накопиченням IFW-балів за кожного залученого інвестора вам нараховуються IFW-бали від суми залучених інвестицій.',
-                    'Накопичені бали можна обміняти на реальні кошти.',
-                    'Еквівалент балів до обсягу інвестицій ви можете уточнити у нашого менеджера.',
-                    'Чим більша сума залучених інвестицій — тим більше балів ви отримуєте, а відповідно зростає і ваш дохід.',
-                    'Унікальний набір інвестора Black.',
-                    'Особиста знижка в закладах харчування проекту.',
-                    'Закритий чат інвесторів з актуальною інформацією та етапами проектів.',
-                    'Пріоритет на відвідування закритих презентацій, зустрічей та відкриття закладів, дегустацій.',
-                    'Індивідуальний менеджер.',
-                    'Можливість першим дізнаватись нові проекти та можливості для інвестицій.',
-                    'Кращі умови друзям інвестора Black.',
-                    'Закритий відпочинок інвесторів від IFW.',
-                    'Особливі заходи цього статусу інвесторам для спілкування між собою.',
-                    'Консьєрж сервіс, консалтинг, топовий юрист та нотаріус нашої компанії для особистих консультацій ваших питань та питань інвестиційного характеру.',
-                    'Доступ до топового офісу для проведення зустрічей із вашими інвесторами.',
-                    'Можливість купити більше сертифікатів в одні руки ніж у статусу Platinum.',
-                    'Доступ до віп форуму - відпочинку в кращому готельному комплексі цього статусу інвесторів.',
-                    'Доступ до статусу Platinum будь якій людині.'
-                ]
+                    '1. Персоналізований цифровий та фізичний сертифікат інвестора <br> Іменний документ, що підтверджує ваш статус та участь у проєктах <span class="text-[#6366F1]">IFW</span>.',
+                    '2. Унікальний інвесторський номер з доступом до реферальної системи <br> На ваш вибір: <br> — 10% фіксованої винагороди від першого внеску інвестора, залученого за вашим промокодом або — 7% від усіх інвестицій залученого клієнта за вашим промокодом та подальших від Вашої лінії інвестицій «Після залучення Вами інвестора всі подальші інвестиції як цього інвестора, так і осіб, залучених ним, фіксуються з Вашим бонусом» .',
+                    '• Доступ до бонусної системи з накопиченням <span class="text-[#6366F1]">IFW-балів</span> за кожного залученого інвестора вам нараховуються <span class="text-[#6366F1]">IFW-бали</span> від суми залучених інвестицій.',
+                    '• Накопичені бали можна обміняти на реальні кошти.',
+                    '• Еквівалент балів до обсягу інвестицій ви можете уточнити у нашого менеджера.',
+                    '• Чим більша сума залучених інвестицій — тим більше балів ви отримуєте, а відповідно зростає і ваш дохід.',
+                    '• Унікальний набір інвестора <span class="text-[#6366F1]">Black.</span>',
+                    '• Особиста знижка в закладах харчування проєкту.',
+                    '• Закритий чат інвесторів з актуальною інформацією та етапами проєктів.',
+                    '• Пріоритет на відвідування закритих презентацій, зустрічей та відкриття закладів, дегустацій.',
+                    '• Індивідуальний менеджер.',
+                    '• Можливість першим дізнаватись нові проєкти та можливості для інвестицій.',
+                    '• Кращі умови друзям інвестора <span class="text-[#6366F1]">Black.</span>',
+                    '• Закритий відпочинок інвесторів від <span class="text-[#6366F1]">IFW.</span>',
+                    '• Особливі заходи цього статусу інвесторам для спілкування між собою.',
+                    '• Консьєрж сервіс, консалтинг, топовий юрист та нотаріус нашої компанії для особистих консультацій ваших питань та питань інвестиційного характеру.',
+                    '• Доступ до топового офісу для проведення зустрічей із вашими інвесторами.',
+                    '• Можливість купити більше сертифікатів в одні руки ніж у статусу <span class="text-[#6366F1]">Platinum.</span>',
+                    '• Доступ до віп форуму - відпочинку в кращому готельному комплексі цього статусу інвесторів.',
+                    '• Доступ до статусу <span class="text-[#6366F1]">Platinum</span> будь якій людині.'
+                ],
+                footer: '<span class="text-[#6366F1]">Розподіл часток</span> відбувається після повного закриття інвестиційного збору та згідно суми вашої інвестиції.'
             }
         ];
 
@@ -1415,19 +1380,19 @@
             setTimeout(() => {
                 // Делаем список в 2 колонки на больших экранах, чтобы текст не был слишком "длинным" в одну строку
                 let listHtml = data.list.map((item, i) => `
-            <li class="flex gap-4">
-                <span class="text-[#6366F1] font-bold">${i + 1}.</span>
-                <span>${item}</span>
-            </li>
+            <p class="flex gap-4">
+
+               <span>${item}</span>
+            </p>
         `).join('');
 
                 contentDiv.innerHTML = `
         <div class="w-full max-w-none px-4">
             <h3 class="text-3xl md:text-5xl font-bold mb-10 text-center md:text-left tracking-tight">${data.title}</h3>
 
-            <ul class="grid grid-cols-1 gap-y-6 text-gray-200 text-lg md:text-2xl leading-relaxed w-full">
+            <div class="grid grid-cols-1 gap-y-6 text-gray-200 text-lg md:text-2xl leading-relaxed w-full">
                 ${listHtml}
-            </ul>
+            </div>
 
             <div class="mt-12 pt-8 border-t border-white/10 w-full">
                 <p class="text-[#6366F1] font-bold text-2xl md:text-3xl leading-tight">
@@ -1469,6 +1434,8 @@
         });
     });
 </script>
+<script src="lightbox.js"></script>
+<script src="stats.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 </html>

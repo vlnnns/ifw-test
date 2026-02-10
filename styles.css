@@ -73,3 +73,18 @@
 .animate-marquee2:hover {
     animation-play-state: paused;
 }
+
+
+/* скорость автопрокрутки: меняй duration */
+.vtrack {
+    animation: vscroll 28s linear infinite;
+}
+/* пауза при наведении/тапе */
+[data-vscroll]:hover .vtrack,
+[data-vscroll]:focus-within .vtrack {
+    animation-play-state: paused;
+}
+@keyframes vscroll {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-50%); } /* because we will duplicate items via JS */
+}
