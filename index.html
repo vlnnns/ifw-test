@@ -49,7 +49,7 @@
     </div>
 
     <!-- WHITE MAIN CONTAINER -->
-    <div class="overflow-hidden rounded-[48px] bg-panel relative z-10 mt-2">
+    <div class="overflow-hidden rounded-[48px] bg-panel relative z-10 mt-2 mx-3">
 
         <!-- NAV / HEADER -->
         <header
@@ -67,11 +67,11 @@
                 <nav class="hidden md:block">
                     <div class="rounded-full bg-[#EAEAEA] px-4 py-2">
                         <ul class="flex items-center gap-2 text-base text-black font-normal">
-                            <li><a href="#" class="px-3 py-2 hover:opacity-70 transition">Головна</a></li>
-                            <li><a href="#" class="text-[#7867F4] px-3 py-2">Про нас</a></li>
-                            <li><a href="#" class="px-3 py-2 hover:opacity-70 transition">Проєкти</a></li>
-                            <li><a href="#" class="px-3 py-2 hover:opacity-70 transition">Реферальна програма</a></li>
-                            <li><a href="#" class="px-3 py-2 hover:opacity-70 transition">FAQ</a></li>
+                            <li><a href="#" class="px-3 py-2 hover:text-[#7867F4] transition">Головна</a></li>
+                            <li><a href="#about" class="hover:text-[#7867F4] transition px-3 py-2">Про нас</a></li>
+                            <li><a href="#projects" class="px-3 py-2 hover:text-[#7867F4]transition">Проєкти</a></li>
+                            <li><a href="#referall" class="px-3 py-2 hover:text-[#7867F4] transition">Реферальна програма</a></li>
+<!--                            <li><a href="#faq" class="px-3 py-2 hover:text-[#7867F4] transition">FAQ</a></li>-->
                         </ul>
                     </div>
                 </nav>
@@ -95,11 +95,11 @@
                     class="absolute top-[calc(100%-1px)] left-6 right-6 bg-[#EAEAEA] rounded-b-[48px] px-10 pb-12 pt-6 shadow-2xl md:hidden"
             >
                 <ul class="flex flex-col gap-8 text-2xl font-medium text-black">
-                    <li><a @click="open = false" href="#" class="hover:opacity-70 transition">Головна</a></li>
-                    <li><a @click="open = false" href="#" class="text-[#7867F4]">Про нас</a></li>
-                    <li><a @click="open = false" href="#" class="hover:opacity-70 transition">Проєкти</a></li>
-                    <li><a @click="open = false" href="#" class="hover:opacity-70 transition">Реферальна програма</a></li>
-                    <li><a @click="open = false" href="#" class="hover:opacity-70 transition">FAQ</a></li>
+                    <li><a @click="open = false" href="#" class="hover:text-[#7867F4] transition">Головна</a></li>
+                    <li><a @click="open = false" href="#about" class="hover:text-[#7867F4] transition">Про нас</a></li>
+                    <li><a @click="open = false" href="#projects" class="hover:text-[#7867F4] transition">Проєкти</a></li>
+                    <li><a @click="open = false" href="#referall" class="hover:text-[#7867F4] transition">Реферальна програма</a></li>
+<!--                    <li><a @click="open = false" href="#" class="hover:text-[#7867F4] transition">FAQ</a></li>-->
                 </ul>
             </div>
         </header>
@@ -180,7 +180,7 @@
     </div>
 
     <!-- HOW IT WORKS (NEXT SECTION) -->
-    <section id="how" class="px-2 pb-16 sm:px-10">
+    <section id="about" class="px-2 pb-16 sm:px-10">
         <div class="rounded-[44px] bg-dark py-12 sm:py-14">
 
             <!-- Title -->
@@ -235,7 +235,7 @@
     </section>
 
     <!-- NEXT SECTION: "Перемагає народ, перемагає країна" -->
-    <section id="win" class="px-2 pb-16 sm:px-10">
+    <section id="win" class="px-2 pb-16 sm:px-10 mx-3">
         <div class="rounded-[44px] bg-dark py-12 sm:py-14">
             <!-- Title -->
             <h2 class="text-center font-sans text-[30px] font-extrabold tracking-tight text-white sm:text-[40px]">
@@ -292,7 +292,7 @@
 
 
     <!-- PROJECTS SECTION + CARD OPEN (modal) -->
-    <section id="projects" class="px-2 pb-16 sm:px-10">
+    <section id="projects" class="px-2 pb-16 sm:px-10 mx-3">
         <div class="rounded-[44px] bg-[#D8D9D8] py-12 sm:py-14 px-6 sm:px-12">
 
             <!-- Title -->
@@ -613,7 +613,7 @@
                                                 <span class="raised-text">0</span> $ / <span class="goal-text">0</span> $
                                             </div>
 
-                                            <div class="text-white/60 mb-4 text-sm whitespace-nowrap">
+                                            <div class="text-white/60 mb-4 text-sm">
                                                 <span class="certs-text font-semibold">0</span> сертифікатів вже активовано
                                             </div>
 
@@ -883,7 +883,7 @@
 
     </section>
 
-    <section class=" py-16 px-2 sm:px-10  text-white font-sans">
+    <section class="mx-3 py-16 px-2 sm:px-10  text-white font-sans">
         <div>
 
             <div class="mb-12">
@@ -942,7 +942,7 @@
 
         </div>
     </section>
-    <section class="py-16 px-2 sm:px-10 text-white font-sans border-t border-white/10">
+    <section id="referall" class="mx-3 py-16 px-2 sm:px-10 text-white font-sans border-t border-white/10">
         <div class=" mx-auto py-10">
 
             <h2 class="text-3xl md:text-5xl font-bold text-center tracking-tight uppercase">
@@ -985,7 +985,7 @@
         </div>
     </section>
 
-    <section class="py-16 px-2 sm:px-10 text-white font-sans overflow-hidden py-12">
+    <section class="mx-3 py-16 px-2 sm:px-10 text-white font-sans overflow-hidden py-12">
         <div class="mx-auto">
             <h2 class="text-center text-3xl md:text-6xl font-bold mb-12 sm:mb-20 leading-tight">
                 Унікальний <span class="text-[#6366F1]">сертифікат та статус</span> інвестора
@@ -1044,7 +1044,7 @@
         </div>
     </section>
 
-    <section class="text-white py-16 px-2 sm:px-10">
+    <section class="mx-3 text-white py-16 px-2 sm:px-10">
         <div class="mx-auto">
             <!-- Title -->
             <h2 class="text-left text-2xl sm:text-6xl font-bold leading-tight mb-8">
@@ -1080,7 +1080,7 @@
         </div>
     </section>
 
-    <section class=" py-16 px-2 sm:px-10">
+    <section class="mx-3 py-16 px-2 sm:px-10">
         <div class=" mx-auto">
             <!-- Grid of Images -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -1101,7 +1101,7 @@
     </section>
 
 
-    <section class="text-white py-16 px-2 sm:px-10 font-sans selection:bg-indigo-500/30">
+    <section class="mx-3 text-white py-16 px-2 sm:px-10 font-sans selection:bg-indigo-500/30">
         <div class="mx-auto">
 
             <h2 class="text-2xl md:text-5xl font-bold text-start mb-12 tracking-tight">
@@ -1168,7 +1168,7 @@
         </div>
     </section>
 
-    <section class="py-24 px-2 sm:px-10 text-center font-sans">
+    <section class="mx-3 py-24 px-2 sm:px-10 text-center font-sans">
         <div class="max-w-6xl mx-auto space-y-16">
 
             <h2 class="text-xl md:text-4xl font-bold leading-tight tracking-tight text-gray-300">
@@ -1183,7 +1183,7 @@
         </div>
     </section>
 
-    <footer class="pt-16 px-2 sm:px-10 relative">
+    <footer class="mx-3 pt-16 px-2 sm:px-10 relative">
         <div class="absolute top-8 left-14 sm:left-10 md:left-32 z-0">
             <div class="bg-brand px-8 py-3 shadow-lg">
                 <div class="text-[8px] md:text-xs font-bold tracking-[0.2em] text-[#29292B] whitespace-nowrap">
