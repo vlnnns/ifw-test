@@ -99,7 +99,12 @@
                     <li><a @click="open = false" href="#about" class="hover:text-[#7867F4] transition">Про нас</a></li>
                     <li><a @click="open = false" href="#projects" class="hover:text-[#7867F4] transition">Проєкти</a></li>
                     <li><a @click="open = false" href="#referall" class="hover:text-[#7867F4] transition">Реферальна програма</a></li>
-<!--                    <li><a @click="open = false" href="#" class="hover:text-[#7867F4] transition">FAQ</a></li>-->
+
+                    <li class="pt-2">
+                        <a @click="open = false" href="#" class="inline-flex items-center justify-center bg-[#7867F4] text-white px-8 py-4 rounded-full text-lg font-bold shadow-lg active:scale-95 transition-all w-full text-center">
+                            Зв’язатися
+                        </a>
+                    </li>
                 </ul>
             </div>
         </header>
@@ -362,7 +367,7 @@
                                 <div class="project-card grid grid-cols-1 sm:grid-cols-12 gap-4 items-center" data-project-index="1">
 
                                     <div class="sm:col-span-5 flex flex-col justify-center">
-                                        <div class="text-white/60 text-xs sm:text-sm mb-1">Вже залучено у проєкті:</div>
+                                        <div class="text-white/60 text-xs sm:text-sm mb-1">Вже залучено у проєкт:</div>
                                         <div class="text-base font-semibold text-white mb-4 tracking-tight">
                                             <span class="raised-text">0</span> $ / <span class="goal-text">0</span> $
                                         </div>
@@ -401,7 +406,7 @@
                                                 <circle cx="0" cy="55" r="3.5" fill="#7667ED" />
                                                 <circle class="dot-current" r="5" fill="#7667ED" stroke="#121212" stroke-width="1.5" />
                                             </svg>
-                                            <div class="absolute right-0 -bottom-2 text-[9px] text-white/30 font-bold uppercase">350K</div>
+                                            <div class="absolute right-0 -bottom-2 text-[9px] text-white/30 font-bold uppercase">500K</div>
                                         </div>
                                     </div>
                                 </div>
@@ -452,8 +457,8 @@
                                         Загальна <span class="text-brand">сума збору:</span>
                                     </div>
                                     <div class="mt-3 font-sans text-[26px] sm:text-[34px] font-semibold leading-tight">
-                                        350 000 $<br />
-                                        <span class="text-white/70">(≈ 15 050 000 грн)</span>
+                                        500 000 $<br />
+                                        <span class="text-white/70">(≈ 21 500 000 грн)</span>
                                     </div>
                                 </div>
                             </div>
@@ -465,6 +470,9 @@
                                     <div class="relative overflow-hidden rounded-[22px] h-[520px] sm:h-[620px]" data-vscroll data-gallery-group="project1">
                                         <!-- Track (duplicated for infinite scroll) -->
                                         <div class="vtrack flex flex-col gap-3 will-change-transform" data-vtrack>
+                                            <button type="button" class="group rounded-[18px] overflow-hidden bg-black/20" data-gallery-item data-src="img/project1/project1.png" aria-label="Open image 0">
+                                                <img src="img/project1/project1.png" alt="Project Image 1" class="w-full h-auto object-cover transition group-hover:scale-[1.02]" />
+                                            </button>
                                             <!-- ITEM 1 -->
                                             <button type="button" class="group rounded-[18px] overflow-hidden bg-black/20" data-gallery-item data-src="img/project1/project1-1.png" aria-label="Open image 1">
                                                 <img src="img/project1/project1-1.png" alt="Project Image 1" class="w-full h-auto object-cover transition group-hover:scale-[1.02]" />
@@ -483,6 +491,9 @@
                                             <!-- ITEM 4 -->
                                             <button type="button" class="group rounded-[18px] overflow-hidden bg-black/20" data-gallery-item data-src="img/project1/project1-4.png" aria-label="Open image 4">
                                                 <img src="img/project1/project1-4.png" alt="Project Image 4" class="w-full h-auto object-cover transition group-hover:scale-[1.02]" />
+                                            </button>
+                                            <button type="button" class="group rounded-[18px] overflow-hidden bg-black/20" data-gallery-item data-src="img/project1/project1-5.png" aria-label="Open image 5">
+                                                <img src="img/project1/project1-5.png" alt="Project Image 4" class="w-full h-auto object-cover transition group-hover:scale-[1.02]" />
                                             </button>
                                         </div>
                                     </div>
@@ -525,7 +536,7 @@
                                         <div class="sm:col-span-5 flex flex-col items-start sm:items-end">
 
                                             <div class="text-left w-fit">
-                                                <div class="text-white/60 text-xs sm:text-sm mb-1">Вже залучено у проєкті:</div>
+                                                <div class="text-white/60 text-xs sm:text-sm mb-1">Вже залучено у проєкт:</div>
                                                 <div class="text-base font-semibold text-white mb-4 tracking-tight">
                                                     <span class="raised-text">0</span> $ / <span class="goal-text">0</span> $
                                                 </div>
@@ -608,7 +619,7 @@
 
                                     <div class="sm:col-span-5 flex flex-col items-start">
                                         <div class="text-left w-fit">
-                                            <div class="text-white/60 text-xs sm:text-sm mb-1">Вже залучено у проєкті:</div>
+                                            <div class="text-white/60 text-xs sm:text-sm mb-1">Вже залучено у проєкт:</div>
                                             <div class="text-base font-semibold text-white mb-4 tracking-tight">
                                                 <span class="raised-text">0</span> $ / <span class="goal-text">0</span> $
                                             </div>
@@ -711,6 +722,9 @@
                                     <div class="relative overflow-hidden rounded-[22px] h-[520px] sm:h-[620px]" data-vscroll data-gallery-group="project2">
                                         <!-- Track (duplicated for infinite scroll) -->
                                         <div class="vtrack flex flex-col gap-3 will-change-transform" data-vtrack>
+                                            <button type="button" class="group rounded-[18px] overflow-hidden bg-black/20" data-gallery-item data-src="img/project2/project2.png" aria-label="Open image 0">
+                                                <img src="img/project2/project2.png" alt="Project Image 1" class="w-full h-auto object-cover transition group-hover:scale-[1.02]" />
+                                            </button>
                                             <!-- ITEM 1 -->
                                             <button type="button" class="group rounded-[18px] overflow-hidden bg-black/20" data-gallery-item data-src="img/project2/project2-1.png" aria-label="Open image 1">
                                                 <img src="img/project2/project2-1.png" alt="Project Image 1" class="w-full h-auto object-cover transition group-hover:scale-[1.02]" />
@@ -729,6 +743,9 @@
                                             <!-- ITEM 4 -->
                                             <button type="button" class="group rounded-[18px] overflow-hidden bg-black/20" data-gallery-item data-src="img/project2/project2-4.png" aria-label="Open image 4">
                                                 <img src="img/project2/project2-4.png" alt="Project Image 4" class="w-full h-auto object-cover transition group-hover:scale-[1.02]" />
+                                            </button>
+                                            <button type="button" class="group rounded-[18px] overflow-hidden bg-black/20" data-gallery-item data-src="img/project1/project2-5.png" aria-label="Open image 5">
+                                                <img src="img/project1/project2-5.png" alt="Project Image 4" class="w-full h-auto object-cover transition group-hover:scale-[1.02]" />
                                             </button>
                                         </div>
                                     </div>
@@ -769,7 +786,7 @@
                                         <div class="sm:col-span-5 flex flex-col items-start sm:items-end">
 
                                             <div class="text-left w-fit">
-                                                <div class="text-white/60 text-xs sm:text-sm mb-1">Вже залучено у проєкті:</div>
+                                                <div class="text-white/60 text-xs sm:text-sm mb-1">Вже залучено у проєкт:</div>
                                                 <div class="text-base font-semibold text-white mb-4 tracking-tight">
                                                     <span class="raised-text">0</span> $ / <span class="goal-text">0</span> $
                                                 </div>
@@ -881,65 +898,6 @@
         </div>
     </section>
 
-    <section class="mx-3 py-16 px-2 sm:px-10  text-white font-sans">
-        <div>
-
-            <div class="mb-12">
-                <h2 class="text-3xl md:text-5xl font-bold mb-2">
-                    Загальна інформація
-                </h2>
-                <h3 class="text-3xl md:text-5xl font-bold text-[#6366F1]">
-                    Фінансових Зборів
-                </h3>
-            </div>
-
-            <div class="max-w-2xl mb-16">
-                <p class="text-gray-400 text-lg sm:text-3xl">
-                    Усього три фонди за весь час <span class="text-[#6366F1] font-semibold">(2022–2025)</span>
-                    зібрали понад <span class="text-[#6366F1] font-semibold">100 млрд грн</span>
-                    добровільних пожертв з України та з-за кордону.
-                </p>
-            </div>
-
-            <div class="hidden sm:block relative w-full mb-20 -mt-44 flex justify-center">
-                <img src="img/finances.png" alt="Графік фінансових зборів 2022-2026" class="w-full h-auto max-w-full">
-            </div>
-            <div class="block sm:hidden relative w-full mb-20 flex justify-center">
-                <img src="img/finances-mob.png" alt="Графік фінансових зборів 2022-2026" class="w-full h-auto max-w-full">
-            </div>
-
-            <div class="max-w-md mx-auto lg:ml-auto lg:mr-0 py-4 text-left">
-
-                <div class="mb-8 flex justify-end">
-                    <img src="img/icon1.png" alt="International aid icons" class="h-12 md:h-24 w-auto">
-                </div>
-
-                <div class="space-y-4">
-                    <p class="text-gray-400 text-lg md:text-xl font-light">
-                        Загальна міжнародна допомога <br>
-                        <span class=" font-normal">(військова, фінансова, гуманітарна)</span> <br>
-                        оцінюється приблизно в
-                        <span class="text-[#6366F1] font-bold">309+ млрд євро</span>
-                        <span class=" font-normal">(понад</span>
-                        <span class="text-[#6366F1] font-bold">360$ млрд</span><span class="text-gray-400">)</span>
-                    </p>
-                </div>
-            </div>
-
-            <div class="space-y-8 max-w-full mt-8">
-                <p class="text-lg md:text-3xl text-gray-300 ">
-                    Українські громадяни та волонтери пожертвували принаймні десятки мільярдів гривень у благодійних фондів та на спецрахунки з
-                    <span class="text-[#6366F1] font-bold">2022</span> по <span class="text-[#6366F1] font-bold">2025</span> роки
-                    (одна з найбільших оцінок — понад <span class="text-[#6366F1] font-bold">100 – 150 млрд грн</span> через фонди та збори).
-                </p>
-
-                <p class="text-lg md:text-3xl text-gray-300">
-                    Міжнародна державна підтримка (не прямі донати) становить сотні мільярдів доларів/євро.
-                </p>
-            </div>
-
-        </div>
-    </section>
     <section id="referall" class="mx-3 py-16 px-2 sm:px-10 text-white font-sans border-t border-white/10">
         <div class=" mx-auto py-10">
 
@@ -1166,6 +1124,65 @@
         </div>
     </section>
 
+    <section class="mx-3 py-16 px-2 sm:px-10  text-white font-sans">
+        <div>
+
+            <div class="mb-12">
+                <h2 class="text-3xl md:text-5xl font-bold mb-2">
+                    Загальна інформація
+                </h2>
+                <h3 class="text-3xl md:text-5xl font-bold text-[#6366F1]">
+                    Фінансових Зборів
+                </h3>
+            </div>
+
+            <div class="max-w-2xl mb-16">
+                <p class="text-gray-400 text-lg sm:text-3xl">
+                    Усього три фонди за весь час <span class="text-[#6366F1] font-semibold">(2022–2025)</span>
+                    зібрали понад <span class="text-[#6366F1] font-semibold">100 млрд грн</span>
+                    добровільних пожертв з України та з-за кордону.
+                </p>
+            </div>
+
+            <div class="hidden sm:block relative w-full mb-20 -mt-44 flex justify-center">
+                <img src="img/finances.png" alt="Графік фінансових зборів 2022-2026" class="w-full h-auto max-w-full">
+            </div>
+            <div class="block sm:hidden relative w-full mb-20 flex justify-center">
+                <img src="img/finances-mob.png" alt="Графік фінансових зборів 2022-2026" class="w-full h-auto max-w-full">
+            </div>
+
+            <div class="max-w-md mx-auto lg:ml-auto lg:mr-0 py-4 text-left">
+
+                <div class="mb-8 flex justify-end">
+                    <img src="img/icon1.png" alt="International aid icons" class="h-12 md:h-24 w-auto">
+                </div>
+
+                <div class="space-y-4">
+                    <p class="text-gray-400 text-lg md:text-xl font-light">
+                        Загальна міжнародна допомога <br>
+                        <span class=" font-normal">(військова, фінансова, гуманітарна)</span> <br>
+                        оцінюється приблизно в
+                        <span class="text-[#6366F1] font-bold">309+ млрд євро</span>
+                        <span class=" font-normal">(понад</span>
+                        <span class="text-[#6366F1] font-bold">360$ млрд</span><span class="text-gray-400">)</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="space-y-8 max-w-full mt-8">
+                <p class="text-lg md:text-3xl text-gray-300 ">
+                    Українські громадяни та волонтери пожертвували принаймні десятки мільярдів гривень у благодійних фондів та на спецрахунки з
+                    <span class="text-[#6366F1] font-bold">2022</span> по <span class="text-[#6366F1] font-bold">2025</span> роки
+                    (одна з найбільших оцінок — понад <span class="text-[#6366F1] font-bold">100 – 150 млрд грн</span> через фонди та збори).
+                </p>
+
+                <p class="text-lg md:text-3xl text-gray-300">
+                    Міжнародна державна підтримка (не прямі донати) становить сотні мільярдів доларів/євро.
+                </p>
+            </div>
+
+        </div>
+    </section>
     <section class="mx-3 py-24 px-2 sm:px-10 text-center font-sans">
         <div class="max-w-6xl mx-auto space-y-16">
 
@@ -1269,23 +1286,20 @@
         // Данные для каждого статуса (полный текст со скриншотов)
         const statusData = [
             {
-                title: 'Status <span class="text-[#6366F1]">"Silver"</span> від 500.000',
+                title: 'Status <span class="text-[#7867F4]">"Silver"</span> від 2.000',
                 list: [
-                    '1. Персоналізований цифровий сертифікат інвестора <br> Іменний документ, що підтверджує ваш статус та участь у проекті <span class="text-[#6366F1]">IFW</span>.',
-                    '2. Унікальний інвесторський номер з доступом до реферальної системи <br> На ваш вибір: <br> — 5% фіксованої винагороди від першого внеску інвестора, залученого за вашим промокодом або — 2,5% від усіх інвестицій залученого клієнта за вашим промокодом та подальших від вашої лінії інвестицій «Після залучення Вами інвестора всі подальші інвестиції як цього інвестора, так і осіб, залучених ним, фіксуються з Вашим бонусом»'
+                    '1. Персоналізований цифровий сертифікат інвестора <br> Іменний документ, що підтверджує ваш статус та участь у проекті <span class="text-[#7867F4]">IFW</span>.',
+                    '2. Унікальний інвесторський номер з доступом до реферальної системи <br> На ваш вибір: <br> — 5% фіксованої винагороди від першого внеску інвестора, залученого за вашим промокодом або — 2,5% від усіх інвестицій залученого клієнта за вашим промокодом та подальших від вашої лінії інвестицій «Після залучення Вами інвестора всі подальші інвестиції як цього інвестора, так і осіб, залучених ним, фіксуються з Вашим бонусом»',
+                    '• Доступ до бонусної системи з накопиченням <span class="text-[#7867F4]">IFW-балів</span> ( Як накопичувати бали — читай нижче )',
                 ],
-                footer: '<span class="text-[#6366F1]">Розподіл часток</span> відбувається після повного закриття інвестиційного збору та згідно суми вашої інвестиції.'
+                footer: '<span class="text-[#7867F4]">Розподіл часток</span> відбувається після повного закриття інвестиційного збору та згідно суми вашої інвестиції.'
             },
             {
                 title: 'Status <span class="text-[#6366F1]">"Green"</span> від 10.000',
                 list: [
                     '1. Персоналізований цифровий та фізичний сертифікат інвестора <br> Іменний документ, що підтверджує ваш статус та участь у проектах <span class="text-[#6366F1]">IFW</span>.',
                     '2. Унікальний інвесторський номер з доступом до реферальної системи <br> На ваш вибір: <br> — 6% фіксованої винагороди від першого внеску інвестора, залученого за вашим промокодом або — 3% від усіх інвестицій залученого клієнта за вашим промокодом та подальших від Вашої лінії інвестицій «Після залучення Вами інвестора всі подальші інвестиції як цього інвестора, так і осіб, залучених ним, фіксуються з Вашим бонусом» .',
-                    '• Доступ до бонусної системи з накопиченням <span class="text-[#6366F1]">IFW-балів</span>.',
-                    '• За кожного залученого інвестора вам нараховуються <span class="text-[#6366F1]">IFW-бали</span> від суми залучених інвестицій.',
-                    '• Накопичені бали можна обміняти на реальні кошти або підвищення статусу.',
-                    '• Еквівалент балів до обсягу інвестицій ви можете уточнити у нашого менеджера.',
-                    '• Чим більша сума залучених інвестицій — тим більше балів ви отримуєте, а відповідно зростає і ваш дохід та можливості перейти на новий рівень.'
+                    '• Доступ до бонусної системи з накопиченням <span class="text-[#6366F1]">IFW-балів</span> ( Як накопичувати бали — читай нижче )',
                 ],
                 footer: '<span class="text-[#6366F1]">Розподіл часток</span> відбувається після повного закриття інвестиційного збору та згідно суми вашої інвестиції.'
             },
@@ -1294,10 +1308,7 @@
                 list: [
                     '1. Персоналізований цифровий та фізичний сертифікат інвестора <br> Іменний документ, що підтверджує ваш статус та участь у проектах <span class="text-[#6366F1]">IFW</span>.',
                     '2. Унікальний інвесторський номер з доступом до реферальної системи <br> На ваш вибір: <br> — 7% фіксованої винагороди від першого внеску інвестора, залученого за вашим промокодом або — 4% від усіх інвестицій залученого клієнта за вашим промокодом та подальших від Вашої лінії інвестицій «Після залучення Вами інвестора всі подальші інвестиції як цього інвестора, так і осіб, залучених ним, фіксуються з Вашим бонусом» .',
-                    '• Доступ до бонусної системи з накопиченням <span class="text-[#6366F1]">IFW-балів</span> за кожного залученого інвестора вам нараховуються <span class="text-[#6366F1]">IFW-бали</span> від суми залучених інвестицій.',
-                    '• Накопичені бали можна обміняти на реальні кошти.',
-                    '• Еквівалент балів до обсягу інвестицій ви можете уточнити у нашого менеджера.',
-                    '• Чим більша сума залучених інвестицій — тим більше балів ви отримуєте, а відповідно зростає і ваш дохід.',
+                    '• Доступ до бонусної системи з накопиченням <span class="text-[#6366F1]">IFW-балів</span> ( Як накопичувати бали — читай нижче )',
                     '• Унікальний набір інвестора <span class="text-[#6366F1]">Purple</span> особиста знижка в закладах харчування проекту відвідування деяких заходів <span class="text-[#6366F1]">IFW</span>.'
                 ],
                 footer: '<span class="text-[#6366F1]">Розподіл часток</span> відбувається після повного закриття інвестиційного збору та згідно суми вашої інвестиції.'
@@ -1307,10 +1318,7 @@
                 list: [
                     '1. Персоналізований цифровий та фізичний сертифікат інвестора <br> Іменний документ, що підтверджує ваш статус та участь у проектах <span class="text-[#6366F1]">IFW</span>.',
                     '2. Унікальний інвесторський номер з доступом до реферальної системи <br> На ваш вибір: <br> — 8% фіксованої винагороди від першого внеску інвестора, залученого за вашим промокодом або — 5% від усіх інвестицій залученого клієнта за вашим промокодом та подальших від Вашої лінії інвестицій «Після залучення Вами інвестора всі подальші інвестиції як цього інвестора, так і осіб, залучених ним, фіксуються з Вашим бонусом» .',
-                    '• Доступ до бонусної системи з накопиченням <span class="text-[#6366F1]">IFW-балів</span> за кожного залученого інвестора вам нараховуються <span class="text-[#6366F1]">IFW-бали</span> від суми залучених інвестицій.',
-                    '• Накопичені бали можна обміняти на реальні кошти.',
-                    '• Еквівалент балів до обсягу інвестицій ви можете уточнити у нашого менеджера.',
-                    '• Чим більша сума залучених інвестицій — тим більше балів ви отримуєте, а відповідно зростає і ваш дохід.',
+                    '• Доступ до бонусної системи з накопиченням <span class="text-[#6366F1]">IFW-балів</span> ( Як накопичувати бали — читай нижче )',
                     '• Унікальний набір інвестора <span class="text-[#6366F1]">Gold</span>',
                     '• Особиста знижка в закладах харчування проекту',
                     '• Закритий чат інвесторів з актуальною інформацією та етапами розвитку проектів',
@@ -1323,10 +1331,7 @@
                 list: [
                     '1. Персоналізований цифровий та фізичний сертифікат інвестора <br> Іменний документ, що підтверджує ваш статус та участь у проектах <span class="text-[#6366F1]">IFW</span>.',
                     '2. Унікальний інвесторський номер з доступом до реферальної системи <br> На ваш вибір: <br> — 9% фіксованої винагороди від першого внеску інвестора, залученого за вашим промокодом або — 6% від усіх інвестицій залученого клієнта за вашим промокодом та подальших від Вашої лінії інвестицій «Після залучення Вами інвестора всі подальші інвестиції як цього інвестора, так і осіб, залучених ним, фіксуються з Вашим бонусом» .',
-                    '• Доступ до бонусної системи з накопиченням <span class="text-[#6366F1]">IFW-балів</span> за кожного залученого інвестора вам нараховуються <span class="text-[#6366F1]">IFW-бали</span> від суми залучених інвестицій.',
-                    '• Накопичені бали можна обміняти на реальні кошти.',
-                    '• Еквівалент балів до обсягу інвестицій ви можете уточнити у нашого менеджера.',
-                    '• Чим більша сума залучених інвестицій — тим більше балів ви отримуєте, а відповідно зростає і ваш дохід.',
+                    '• Доступ до бонусної системи з накопиченням <span class="text-[#6366F1]">IFW-балів</span> ( Як накопичувати бали — читай нижче )',
                     '• Унікальний набір інвестора <span class="text-[#6366F1]">Platinum</span>',
                     '• Особиста знижка в закладах харчування проекту',
                     '• Закритий чат інвесторів з актуальною інформацією та етапами проектів',
@@ -1344,10 +1349,7 @@
                 list: [
                     '1. Персоналізований цифровий та фізичний сертифікат інвестора <br> Іменний документ, що підтверджує ваш статус та участь у проєктах <span class="text-[#6366F1]">IFW</span>.',
                     '2. Унікальний інвесторський номер з доступом до реферальної системи <br> На ваш вибір: <br> — 10% фіксованої винагороди від першого внеску інвестора, залученого за вашим промокодом або — 7% від усіх інвестицій залученого клієнта за вашим промокодом та подальших від Вашої лінії інвестицій «Після залучення Вами інвестора всі подальші інвестиції як цього інвестора, так і осіб, залучених ним, фіксуються з Вашим бонусом» .',
-                    '• Доступ до бонусної системи з накопиченням <span class="text-[#6366F1]">IFW-балів</span> за кожного залученого інвестора вам нараховуються <span class="text-[#6366F1]">IFW-бали</span> від суми залучених інвестицій.',
-                    '• Накопичені бали можна обміняти на реальні кошти.',
-                    '• Еквівалент балів до обсягу інвестицій ви можете уточнити у нашого менеджера.',
-                    '• Чим більша сума залучених інвестицій — тим більше балів ви отримуєте, а відповідно зростає і ваш дохід.',
+                    '• Доступ до бонусної системи з накопиченням <span class="text-[#6366F1]">IFW-балів</span> ( Як накопичувати бали — читай нижче )',
                     '• Унікальний набір інвестора <span class="text-[#6366F1]">Black.</span>',
                     '• Особиста знижка в закладах харчування проєкту.',
                     '• Закритий чат інвесторів з актуальною інформацією та етапами проєктів.',
